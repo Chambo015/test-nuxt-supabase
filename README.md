@@ -15,3 +15,5 @@ npx prisma generate
 
 npm run dev
 ```
+
+###[deploy link](https://master--euphonious-malabi-e0f648.netlify.app/)
