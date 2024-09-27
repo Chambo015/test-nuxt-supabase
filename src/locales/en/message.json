@@ -7,7 +7,7 @@
   "loginFailureIncorrectLoginOrPassword": "Incorrect login or password. Please try again.",
   "loginFailureIncorrectCode": "Incorrect code",
   "loginFailureIncorrectUsername": "User with the specified login or email not found.",
-  "accountLocked": "Your account is locked. Please contact support.",
+  "accountLocked":"Your account is locked. Please contact support.",
   "passwordResetLinkSent": "Password reset link sent to your email address.",
   "passwordResetLinkSendFailure": "An error occurred while sending the password reset link. Please try again later.",
   "profileUpdateSuccess": "Your profile has been successfully updated.",
