@@ -82,5 +82,12 @@ watch(selectedServerType, () => {
         </select>
       </div>
     </div>
+
+    <ul>
+      <li><NuxtLink to="test">test</NuxtLink></li>
+      <li><NuxtLink to="test2">test2</NuxtLink></li>
+      <li><NuxtLink to="test3">test3</NuxtLink></li>
+      <li><NuxtLink to="test4">test4</NuxtLink></li>
+    </ul>
   </div>
 </template>
