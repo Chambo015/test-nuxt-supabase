@@ -1,0 +1,165 @@
+{
+  "auth": {
+    "login": "Login",
+    "regis": "Registration",
+    "reset": "Reset Password",
+    "confirm": "Login",
+    "saveDays": "Remember for 30 days",
+    "resetPassword": "Forgot password?",
+    "enterEmail": "Enter your e-mail",
+    "tweFactorAuth": "Two-factor authentication",
+    "smsSend": "Code sent",
+    "emailAddress": "To the specified email",
+    "passwordCode": "a four-digit code-password will be sent",
+    "sendTimer": "Resend in:",
+    "spamEmail": "If the code hasn't arrived, check the Spam folder",
+    "completeReg": "Complete registration",
+    "attentionChangeName": {
+      "note": "Be careful, you can only change the certificate holder's name {once}!",
+      "once": "once"
+    }
+  },
+  "main": {
+    "head": {
+      "title_1": "Portal from experts",
+      "title_2": "in information security"
+    },
+    "partners": "Platform partners",
+    "manage": {
+      "title": "Methodology{newline} for managers",
+      "note": "We explain how to build information security in an organization according to regulatory requirements and international standards"
+    },
+    "citizens": {
+      "title": "Cyber Hygiene for Citizens",
+      "note": "Topics include lessons on safe social media use, password management, and general digital hygiene practices."
+    },
+    "news": {
+      "title": "News",
+      "note": "Latest news, analysis, and event reviews in the world of information security.",
+      "all": "All news"
+    }
+  },
+  "feed": {
+    "history_title": "Our stories",
+    "title": "Live feed",
+    "select_type_content": "Content type"
+  },
+  "awareness": {
+    "start": "Start course",
+    "course": "course",
+    "title": "Awareness",
+    "for_all": "for all",
+    "note": "Welcome to our website dedicated to the important topic of information security for citizens",
+    "security": {
+      "title": "Basics of Awareness",
+      "note": "safety and efficiency."
+    },
+    "promo": {
+      "title_1": "Stay safe in the digital world!",
+      "note_1": "Awareness for citizens — quickly and easily secure yourself in the digital world! Just 15 minutes, and your level of information security will increase.",
+      "title_2": "What does the course offer?",
+      "note_2": "Each lesson contains practical advice and useful tips designed specifically for citizens. Join and become part of a secure online community!"
+    },
+    "progamma": {
+      "title": "Training program",
+      "note": "Raise your cyber resilience to a new level",
+      "protection": {
+        "title": "Protection",
+        "note": "Cyber hygiene ensures the protection of your personal information and financial data, preventing their leakage and theft."
+      },
+      "safety": {
+        "title": "Safety",
+        "note": "Practicing cyber hygiene reduces the risk of infecting your computer with viruses and malware, ensuring the security of your devices and data."
+      },
+      "reliability": {
+        "title": "Reliability",
+        "note": "Proper cyber hygiene helps strengthen your passwords and accounts, making them less vulnerable to hacking."
+      },
+      "recognition": {
+        "title": "Recognition",
+        "note": "Awareness skills help recognize phishing and avoid online fraud."
+      },
+      "responsibility": {
+        "title": "Responsibility",
+        "note": "Cyber hygiene ensures safe and responsible behavior on social networks and online environments."
+      },
+      "efficiency": {
+        "title": "Productivity",
+        "note": "Practicing cyber hygiene helps increase productivity and reduce stress when using the internet."
+      },
+      "updates": {
+        "title": "Updates",
+        "note": "Regularly updating software and operating systems increases the security of your device."
+      }
+    }
+  },
+  "methodology": {
+    "title": "Methodology",
+    "note_1": "Our methodology aims to enhance the level of information security in organizations and create a secure digital environment. The process includes analyzing current security measures, assessing their effectiveness, and implementing new solutions in accordance with regulatory requirements and international standards.",
+    "note_2": "The main goal of the methodology is to help organizations adapt to changes in the field of cybersecurity and strengthen their protection against threats.",
+    "list_title": "Composition of the methodology",
+    "post": {
+      "title": "Posts",
+      "desc": "You can read the posts related to the methodology."
+    },
+    "news": {
+      "title": "News",
+      "desc": "You can explore the news section on our website to learn more about the latest events and achievements in the field of information security."
+    },
+    "accessDenied": "To access the Methodology article, you need to",
+    "desc": "Imagine that we are officials responsible for ensuring information security, or wish to become them in the future.",
+    "subDesc": "What do you need to know and be able to do for this? Let's figure it out together!",
+    "disclaimer": "Disclaimer: The authors do not claim absolute accuracy in the materials on information security (from the perspective of current regulatory legal acts of the Republic of Kazakhstan). The aim of the work is to improve the protection of your systems and raise staff awareness.",
+    "article": "Article",
+    "articles": {
+      "1": "What is information security and which documents regulate it?",
+      "2": "Who and why must comply with information security requirements in the Republic of Kazakhstan?",
+      "3": "What is a CII?",
+      "4": "What does the Information Security Department do?",
+      "5": "What is a SOC, and who needs it?",
+      "6": "What are compliance tests for information security requirements, who conducts them, and who needs to pass them?",
+      "7": "What is an audit of information systems, who conducts it, and who needs to pass it?",
+      "8": "What is an instrumental examination of information system components?",
+      "9": "What is the trusted software registry?",
+      "10": "What is the assurance level or compliance with ST RK ISO/IEC 15408-3?",
+      "11": "Useful links and resources.",
+      "12": "Feedback"
+    }
+  },
+  "course": {
+    "lesson": "Lesson",
+    "lessons": "lessons",
+    "startExecution": "Start execution",
+    "allLessons": "All lessons",
+    "lessonMaterials": "Lesson materials",
+    "certificate": {
+      "title": "Congratulations!",
+      "note": "You have completed the Awareness course",
+      "ru": "Get certificate (in Russian)",
+      "kz": "Get certificate (in Kazakh)",
+      "en": "Get certificate (in English)"
+    },
+    "uncompletedReg": "To receive the Certificate, complete registration and pass all tests"
+  },
+  "profile": {
+    "all": {
+      "title": "General",
+      "note": "The data will be displayed in the public profile"
+    },
+    "password": {
+      "note": "Please enter the current password"
+    }
+  },
+  "about": {
+    "head": {
+      "title": "About us"
+    },
+    "note1": "Welcome to our social project, which aims to help people better understand how to stay safe in the digital world and support cybersecurity professionals.",
+    "note2": "We are MSSP.GLOBAL, a leading company in the field of cybersecurity. We will help protect your business from cyber threats through penetration testing, vulnerability analysis, creating a security system, and training in cybersecurity rules.",
+    "note3": "We are always happy to hear your suggestions {link}",
+    "team": {
+      "title": "Our team"
+    },
+    "credits": "Hall of Fame"
+  }
+}

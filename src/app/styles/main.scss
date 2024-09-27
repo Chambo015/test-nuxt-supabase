@@ -1,0 +1,43 @@
+@import '../../../node_modules/primeicons/primeicons.css';
+
+@import 'fonts';
+@import 'variables';
+@import 'base';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.center{
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hover-link-effect {
+  @apply relative after:absolute after:bg-gray-200 after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300
+}
+
+// vue-carousel
+.carousel__track {
+  align-items: stretch;
+}
+.carousel__slide {
+  align-items: stretch !important;
+}
+.cert-slider{
+  .carousel__viewport{
+    overflow: unset;
+  }
+}
+.carousel.is-dragging {
+  pointer-events: none; // for to prevent click when drag event 
+}
+
+jdiv[class^='wrap'] {
+  bottom: 47px;
+  z-index: 10 !important;
+}
+
+svg.nuxt-icon {
+  margin-bottom: 0px;
+}

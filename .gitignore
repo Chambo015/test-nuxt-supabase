@@ -5,6 +5,8 @@
 .nitro
 .cache
 dist
+tasks.txt
+package-lock.*
 
 # Node dependencies
 node_modules
@@ -22,3 +24,8 @@ logs
 .env
 .env.*
 !.env.example
+
+# Sentry Config File
+.sentryclirc
+
+.npmrc

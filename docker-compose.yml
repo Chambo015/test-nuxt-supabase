@@ -1,0 +1,38 @@
+version: '3'
+services:
+  nuxt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NUXT_BASE_URL=$NUXT_BASE_URL
+        - NUXT_SITE_ENV=$NUXT_SITE_ENV
+        - PORT=$PORT
+        - NUXT_SITE_URL=$NUXT_SITE_URL
+        - NUXT_DEV_SITE_URL=$NUXT_DEV_SITE_URL
+        - NUXT_GOOGLE_CLIENT_ID=$NUXT_GOOGLE_CLIENT_ID
+        - NUXT_SENTRY_DSN=$NUXT_SENTRY_DSN
+        - NUXT_TIPTOP_PUBLIC_ID=$NUXT_TIPTOP_PUBLIC_ID
+    ports:
+      - '5454:5454'
+    env_file:
+      - .env
+    environment:
+      - NUXT_BASE_URL=${NUXT_BASE_URL}
+      - NUXT_SITE_ENV=${NUXT_SITE_ENV}
+      - PORT=${PORT}
+      - NUXT_SITE_URL=${NUXT_SITE_URL}
+      - NUXT_DEV_SITE_URL=${NUXT_DEV_SITE_URL}
+      - NUXT_GOOGLE_CLIENT_ID=${NUXT_GOOGLE_CLIENT_ID}
+      - NUXT_SENTRY_DSN=${NUXT_SENTRY_DSN}
+      - NUXT_TIPTOP_PUBLIC_ID=${NUXT_TIPTOP_PUBLIC_ID}
+    restart: always
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - nuxt

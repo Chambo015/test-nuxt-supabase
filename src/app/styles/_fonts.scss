@@ -1,0 +1,192 @@
+@font-face {
+  font-family: 'Neue Machina';
+  src: url('../../assets/fonts/neueMachina/NeueMachina-Ultralight.eot');
+  src:
+    local('Neue Machina Ultralight'),
+    local('NeueMachina-Ultralight'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Ultralight.eot?#iefix')
+      format('embedded-opentype'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Ultralight.woff2') format('woff2'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Ultralight.woff') format('woff'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Ultralight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Machina';
+  src: url('../../assets/fonts/neueMachina/NeueMachina-Light.eot');
+  src:
+    local('Neue Machina Light'),
+    local('NeueMachina-Light'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Light.eot?#iefix')
+      format('embedded-opentype'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Light.woff2')
+      format('woff2'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Light.woff') format('woff'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Light.ttf')
+      format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Machina';
+  src: url('../../assets/fonts/neueMachina/NeueMachina-Black.eot');
+  src:
+    local('Neue Machina Black'),
+    local('NeueMachina-Black'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Black.eot?#iefix')
+      format('embedded-opentype'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Black.woff2')
+      format('woff2'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Black.woff') format('woff'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Black.ttf')
+      format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Machina';
+  src: url('../../assets/fonts/neueMachina/NeueMachina-Regular.eot');
+  src:
+    local('Neue Machina Regular'),
+    local('NeueMachina-Regular'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Regular.woff2')
+      format('woff2'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Regular.woff')
+      format('woff'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Regular.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Machina';
+  src: url('../../assets/fonts/neueMachina/NeueMachina-Bold.eot');
+  src:
+    local('Neue Machina Bold'),
+    local('NeueMachina-Bold'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Bold.eot?#iefix')
+      format('embedded-opentype'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Bold.woff2') format('woff2'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Bold.woff') format('woff'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Bold.ttf')
+      format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Machina';
+  src: url('../../assets/fonts/neueMachina/NeueMachina-Medium.eot');
+  src:
+    local('Neue Machina Medium'),
+    local('NeueMachina-Medium'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Medium.eot?#iefix')
+      format('embedded-opentype'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Medium.woff2')
+      format('woff2'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Medium.woff') format('woff'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Medium.ttf')
+      format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Machina';
+  src: url('../../assets/fonts/neueMachina/NeueMachina-Ultrabold.eot');
+  src:
+    local('Neue Machina Ultrabold'),
+    local('NeueMachina-Ultrabold'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Ultrabold.eot?#iefix')
+      format('embedded-opentype'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Ultrabold.woff2')
+      format('woff2'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Ultrabold.woff')
+      format('woff'),
+    url('../../assets/fonts/neueMachina/NeueMachina-Ultrabold.ttf')
+      format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src:
+    url('../../assets/fonts/manrope/Manrope-ExtraLight.woff2') format('woff2'),
+    url('../../assets/fonts/manrope/Manrope-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src:
+    url('../../assets/fonts/manrope/Manrope-Light.woff2') format('woff2'),
+    url('../../assets/fonts/manrope/Manrope-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src:
+    url('../../assets/fonts/manrope/Manrope-Regular.woff2') format('woff2'),
+    url('../../assets/fonts/manrope/Manrope-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src:
+    url('../../assets/fonts/manrope/Manrope-Medium.woff2') format('woff2'),
+    url('../../assets/fonts/manrope/Manrope-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src:
+    url('../../assets/fonts/manrope/Manrope-SemiBold.woff2') format('woff2'),
+    url('../../assets/fonts/manrope/Manrope-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src:
+    url('../../assets/fonts/manrope/Manrope-Bold.woff2') format('woff2'),
+    url('../../assets/fonts/manrope/Manrope-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src:
+    url('../../assets/fonts/manrope/Manrope-ExtraBold.woff2') format('woff2'),
+    url('../../assets/fonts/manrope/Manrope-ExtraBold.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src:
+    url('../../assets/fonts/sfProDisplay/SFProDisplay-Regular.woff2') format('woff2'),
+    url('../../assets/fonts/sfProDisplay/SFProDisplay-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src:
+    url('../../assets/fonts/sfProDisplay/SFProDisplay-Bold.woff2') format('woff2'),
+    url('../../assets/fonts/sfProDisplay/SFProDisplay-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}

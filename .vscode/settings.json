@@ -1,7 +1,17 @@
 {
-    "cSpell.words": [
-        "Nuxt",
-        "nuxtjs",
-        "supabase"
-    ]
+  "cSpell.words": [
+    "кибербезопасности",
+    "Кибергигиена",
+    "кибергигиены",
+    "antfu",
+    "Citizensec",
+    "composables",
+    "INFOSECURITY",
+    "itemicon",
+    "nuxtjs",
+    "primevue"
+  ],
+  "eslint.experimental.useFlatConfig": true,
+  "prettier.enable": false,
+  "editor.formatOnSave": false
 }

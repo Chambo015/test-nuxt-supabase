@@ -1,0 +1,13 @@
+{
+  "notMatchedPasswords": "Passwords do not match",
+  "requiredFieldError": "This field is required.",
+  "emailFormatError": "Please enter a valid email address.",
+  "passwordLengthError": "Password must be at least 6 characters long.",
+  "passwordStrengthError": "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.",
+  "passwordDoesNotMatch": "Passwords do not match",
+  "usernameLengthError": "Username must be between 3 and 20 characters long.",
+  "usernameFormatError": "Username can only contain letters, numbers, '-', and '_'",
+  "fieldLengthError": "{field} must be at least {min} characters long",
+  "requiredFieldPolicy": "You must agree to the Terms and Conditions",
+  "unique": "This {field} already exists"
+}

@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  //font-family: "Neue Machina", sans-serif;
+  
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+.container {
+  //padding: 0 30px;
+  max-width: 1710px;
+  width: calc(100% - 30px);
+  margin: auto;
+  //overflow: hidden;
+}
+body {
+  font-family: 'Manrope', sans-serif;
+  background: #fafafa;
+  overflow-x: hidden;
+}
+
+*[data-pc-name="avatar"] img{
+  object-fit: cover;
+}
+
+.modal{
+  &.head-none{
+   [data-pc-section="header"]{
+     display: none;
+   }
+  }
+
+  &.p-0{
+    [data-pc-section="content"]{
+      padding: 0;
+    }
+  }
+}
+
+[data-pc-name="toast"]{
+  z-index: 10;
+}
