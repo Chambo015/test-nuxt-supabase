@@ -1,7 +1,7 @@
 <template>
   <div>
     <NuxtLayout name="aside-container">
-      <main class="overflow-x-hidden pt-[30px] max-md:px-4">
+      <main class="overflow-x-hidden pt-[30px] max-2xl:pr-4 max-md:px-4">
         <h1 class="mb-5 font-NeueMachina text-2xl font-black text-[#3B3551]">
           Прогресс прохождения по платным курсам
         </h1>

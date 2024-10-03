@@ -23,17 +23,35 @@ export function objectToGetParamsString(object: {
   return params.length > 0 ? `?${params.join("&")}` : "";
 };
 
-export async function copyText(text: string) {
-  if (!navigator?.clipboard) {
-    console.warn("Clipboard not supported");
-    return null;
-  }
+export async function copyText(text: string): Promise<string | null> {
+  if (!text) return null;
 
-  try {
-    await navigator.clipboard.writeText(text);
-    return text;
-  } catch (error) {
-    console.warn("Copy failed", error);
-    return null;
+  const isClipboardApiSupported = navigator && "clipboard" in navigator;
+
+  if (isClipboardApiSupported) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return text;
+    } catch (error) {
+      console.warn("Copy failed", error);
+      return null;
+    }
+  } else {
+    // legacy code
+    const ta = document.createElement("textarea");
+    ta.value = text ?? "";
+    ta.style.position = "absolute";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand("copy");
+      ta.remove();
+      return text;
+    } catch (err) {
+      console.warn("Legacy Copy failed", err);
+      ta.remove();
+      return null;
+    }
   }
 }

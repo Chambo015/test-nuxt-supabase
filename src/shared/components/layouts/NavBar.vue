@@ -196,7 +196,7 @@ async function logout() {
   height: 68px;
   border-bottom: 1px solid #f5f5f5;
   background: white;
-  z-index: 1;
+  z-index: 9;
 
   .logo {
     height: 17px;

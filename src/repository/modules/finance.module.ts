@@ -129,6 +129,18 @@ class FinanceModule extends FetchFactory {
       },
     );
   }
+
+  async getGroupById(groupId: number | string, options?: Options<{ data: GroupIS }>) {
+    const { fetchOptions } = options || {};
+
+    return this.call<{ data: GroupIS }>(
+        `${this.RESOURCE}/participants/group/${groupId}`,
+        {
+          ...fetchOptions,
+          method: HttpMethod.GET,
+        },
+    );
+  }
 }
 
 export default FinanceModule;

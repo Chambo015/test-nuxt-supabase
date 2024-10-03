@@ -4,7 +4,7 @@
     :class="[$device.isDesktop ? 'grid-cols-[minmax(200px,260px)_1fr]' : 'grid-cols-1']"
   >
     <div
-      class="col-span-1"
+      class="col-span-1 overflow-x-hidden"
       :class="[$device.isDesktop ? 'col-start-2' : 'col-start-1']"
     >
       <slot></slot>

@@ -51,6 +51,7 @@
     "lastName": "Тегіңізді жазыңыз",
     "email": "E-mail жазыңыз",
     "problem": "Мәселені сипаттаңыз",
+    "newPassword": "Жаңа құпия сөз",
     "chooseAnswerOption": "Дұрыс жауапты таңдаңыз"
   },
   "sideBar": {

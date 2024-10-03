@@ -2,7 +2,6 @@
   <Dialog
     v-model:visible="model"
     class="mx-3 bg-white"
-    closable
     dismissable-mask
     modal
     :pt="{

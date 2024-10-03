@@ -27,18 +27,14 @@ async function handleClick() {
     const url = `${window.location.origin}/?ref=${tokenIB.token?.trim()}`;
     const resCopy = await copyText(url);
 
-    if (!resCopy) {
-      isLoading.value = false;
-      $toast.error({ summary: "Не удалось скопировать ссылку" });
-    }
-
     isLoading.value = false;
+
+    if (!resCopy) return $toast.error({ summary: "Не удалось скопировать ссылку" });
+
     $toast.success({ summary: "Ссылка скопирована" });
   } catch (error) {
     isLoading.value = false;
   }
-
-  console.log("@ibtoken", tokenIB);
 }
 </script>
 

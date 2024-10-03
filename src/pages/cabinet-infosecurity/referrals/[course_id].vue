@@ -1,7 +1,7 @@
 <template>
   <div>
     <NuxtLayout name="aside-container">
-      <main class="pt-[30px]">
+      <main class="pt-[30px]  max-2xl:pr-4 max-md:px-4">
         <div class="relative">
           <h1 class="mb-5 font-NeueMachina text-2xl font-black text-[#3B3551]">
             Прогресс прохождения по курсу “Кибергигиена”

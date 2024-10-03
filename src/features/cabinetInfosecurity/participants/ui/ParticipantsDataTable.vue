@@ -1,8 +1,5 @@
 <template>
   <div>
-    <h1 class="mb-5 font-NeueMachina text-2xl font-black text-[#3B3551]">
-      Прогресс прохождения по курсу “{{ titleCourse }}”
-    </h1>
     <div class="broder-[#E5E7EB] rounded-3xl border bg-white px-7 py-[26px] max-md:p-0">
       <DataTable
         edit-mode="cell"
@@ -79,7 +76,6 @@ import { type AdapterParticipantsReturnType, PARTICIPANTS_DATA_FIELDS } from "..
 import { ButtonSendEmailParticipant, ParticipantChangeEmail } from ".";
 
 const props = defineProps<{
-  titleCourse: string
   data: AdapterParticipantsReturnType[]
   isPending: boolean
 }>();
