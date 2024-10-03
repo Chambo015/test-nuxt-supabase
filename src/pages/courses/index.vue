@@ -22,7 +22,7 @@
             </div>
           </template>
           <template v-else>
-            <div class="grid grid-cols-[repeat(3,minmax(250px,380px))] gap-x-6 gap-y-[18px] max-md:grid-cols-1">
+            <div class="grid grid-cols-[repeat(auto-fill,minmax(330px,1fr))] gap-x-6 gap-y-[18px] max-md:grid-cols-1">
               <CourseCard
                 v-for="course in data?.data || []"
                 :key="course.id"
@@ -43,10 +43,10 @@
 </template>
 
 <script setup lang="ts">
+import { CourseCard, SkeletonCourseCard } from "~/features/courses/courseCard";
+import { PayStartCourseButton } from "~/features/startCourse";
 import BaseIcon from "~/shared/components/BaseIcon.vue";
 import { AllCoursesSeo } from "~/shared/seo";
-import { CourseCard, SkeletonCourseCard } from "~/features/course/course-card";
-import { PayStartCourseButton } from "~/features/startCourse";
 
 // config page
 definePageMeta({
@@ -61,9 +61,5 @@ const itemsBreadcrumb = ref([{ label: "Все курсы", route: "/courses" }])
 
 const { $module } = useNuxtApp();
 
-const { data, status, pending } = await useLazyAsyncData("all-courses", () => $module.course.getAllCourses(), { server: false });
-console.log(status.value);
-watch(status, (status) => {
-  console.log('@status', status);
-});
+const { data, pending } = useLazyAsyncData("all-courses", async () => await $module.course.getAllCourses(), { server: false });
 </script>

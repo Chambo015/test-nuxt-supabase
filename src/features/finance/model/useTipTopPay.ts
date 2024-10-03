@@ -68,10 +68,12 @@ export function useTipTopPay() {
             if (paymentResult.success && options.invoiceId) {
               const resCheck = await checkInvoice(options.invoiceId);
               console.log("@res", resCheck);
-              if (resCheck?.is_purchased && onSuccessPay) {
-                onSuccessPay();
-                resolve(resCheck);
-              };
+
+              if (!resCheck) reject(new Error("Fail checkInvoice"));
+              if (!resCheck?.is_purchased) reject(new Error("Счет не оплачен"));
+
+              onSuccessPay && onSuccessPay();
+              resolve(resCheck);
             } else {
               $toast.error({ summary: "Fail payment result", detail: "Оплата не прошла" });
               reject(new Error("Fail payment result"));

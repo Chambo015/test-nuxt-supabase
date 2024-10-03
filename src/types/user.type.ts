@@ -21,3 +21,18 @@ export interface UserDirection {
   name: string
   id: number
 };
+
+export interface ReferralGroup {
+  course_id: number
+  course_name: string
+  total: number
+  finished: number
+}
+
+export interface ReferralGroupUser {
+  user_id: number
+  name: string | null
+  email: string
+  last_name: string | null
+  is_done: boolean
+}

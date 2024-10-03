@@ -11,7 +11,7 @@ export class Course {
 
   static fromJson: JsonParser<Course> = (json: any) => {
     return new Course(
-      Parse.number(json.file),
+      Parse.number(json.id),
       Parse.string(json.name),
       Parse.string(json.note),
       Parse.string(json.poster),

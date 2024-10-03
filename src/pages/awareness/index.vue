@@ -43,12 +43,12 @@
 </template>
 
 <script setup lang="ts">
-import BasicsCyberHygiene from "./_block/BasicsCyberHygiene.vue";
-import PromoLesson from "./_block/PromoLesson.vue";
-import { AwarenessSeo } from "~/shared/seo";
-import { CourseCurriculum } from "~/features/course/curriculum";
+import { CourseCurriculum } from "~/features/courses/courseCurriculum";
 import { useStartCourse } from "~/features/startCourse";
 import { QueryCoursePage } from "~/shared/config";
+import { AwarenessSeo } from "~/shared/seo";
+import BasicsCyberHygiene from "./_block/BasicsCyberHygiene.vue";
+import PromoLesson from "./_block/PromoLesson.vue";
 
 useSeoMeta(AwarenessSeo);
 

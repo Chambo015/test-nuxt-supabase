@@ -53,6 +53,11 @@ export default defineEventHandler(async (event) => {
     <priority>0.80</priority>
   </url>
   <url>
+    <loc>https://citizensec.kz/faq</loc>
+    <lastmod>${dateNow.toISOString()}</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
     <loc>https://citizensec.kz/service</loc>
     <lastmod>${dateNow.toISOString()}</lastmod>
     <priority>0.80</priority>

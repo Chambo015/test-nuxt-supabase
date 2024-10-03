@@ -13,7 +13,7 @@ export function isPromise(obj: any): obj is Promise<unknown> {
   return !!obj && (typeof obj === "object" || typeof obj === "function") && typeof obj.then === "function";
 }
 
-export default function objectToGetParams(object: {
+export function objectToGetParamsString(object: {
   [key: string]: string | number | undefined | null
 }) {
   const params = Object.entries(object)
@@ -22,3 +22,18 @@ export default function objectToGetParams(object: {
 
   return params.length > 0 ? `?${params.join("&")}` : "";
 };
+
+export async function copyText(text: string) {
+  if (!navigator?.clipboard) {
+    console.warn("Clipboard not supported");
+    return null;
+  }
+
+  try {
+    await navigator.clipboard.writeText(text);
+    return text;
+  } catch (error) {
+    console.warn("Copy failed", error);
+    return null;
+  }
+}

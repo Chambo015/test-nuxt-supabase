@@ -2,11 +2,12 @@ import { $fetch, type FetchOptions } from "ofetch";
 import ContentModule from "~/repository/modules/content.module";
 import CourseModule from "~/repository/modules/course.module";
 import FinanceModule from "~/repository/modules/finance.module";
+import UserModule from "~/repository/modules/user.module";
 import { AuthModalType } from "~/shared/enums/common.enum";
 import { StatusCode } from "~/shared/enums/http.enum";
 
 interface IApiInstance {
-  // user: UserModule
+  user: UserModule
   content: ContentModule
   // feedback: FeedbackModule
   course: CourseModule
@@ -91,6 +92,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   const $api = $fetch.create(fetchOptions);
 
   const $modules: IApiInstance = {
+    user: new UserModule($api, nuxtApp.vueApp.$nuxt.$pinia),
     content: new ContentModule($api, nuxtApp.vueApp.$nuxt.$pinia),
     course: new CourseModule($api, nuxtApp.vueApp.$nuxt.$pinia),
     finance: new FinanceModule($api, nuxtApp.vueApp.$nuxt.$pinia),

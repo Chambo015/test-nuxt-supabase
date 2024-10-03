@@ -16,7 +16,7 @@
               </p>
             </TopHeader>
             <br />
-            <MainHeader bg-color="lime" class="md:!text-[100px] !leading-none">
+            <MainHeader bg-color="lime" class="!leading-none md:!text-[100px]">
               {{ $t('pages.methodology.title') }}
             </MainHeader>
             <div class="flex flex-col gap-4 bg-black p-5 font-inter *:flex-1 md:pr-10">
@@ -113,7 +113,7 @@ useSeoMeta({
 });
 const { locale } = useI18n();
 
-const backgroundImage = computed(() => `/images/methodology/main-header-methodology_${locale.value}.png`);
+const backgroundImage = computed(() => `/images/methodology/main-header-methodology_${locale.value}.webp`);
 </script>
 
 <style scoped lang="scss">

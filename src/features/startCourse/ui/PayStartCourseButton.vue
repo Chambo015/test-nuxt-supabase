@@ -20,8 +20,7 @@ const props = defineProps<{
 }>();
 
 const paymentsStore = usePaymentsStore();
-const { startCourse } = useStartCourse(props.course, {
-  courseId: +props.course.id,
+const { startCourse } = useStartCourse(() => props.course, {
   callPayCourse(onSuccess) {
     paymentsStore.showModal({ currentBuyCourse: props.course, onSuccessPay: onSuccess });
   },

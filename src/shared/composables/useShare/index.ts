@@ -1,5 +1,5 @@
 import assert from "~/shared/utils/assert";
-import objectToGetParams, { isPromise } from "~/shared/utils";
+import { isPromise, objectToGetParamsString } from "~/shared/utils";
 import { isMobileOrTablet } from "~/shared/utils/device";
 
 // type LinkOptions = Record<string, unknown>;
@@ -73,7 +73,7 @@ export function useShare(options?: Options) {
       `https://${
       isMobileOrTablet() ? "api" : "web"
       }.whatsapp.com/send${
-      objectToGetParams({ text: opt?.title ? opt?.title + opt?.separator + url : url })}`
+      objectToGetParamsString({ text: opt?.title ? opt?.title + opt?.separator + url : url })}`
     );
     handleClick(link);
   }
@@ -82,7 +82,7 @@ export function useShare(options?: Options) {
     assert(url, "telegram.url");
     const link = (
       `https://telegram.me/share/url${
-      objectToGetParams({ url, text: title })}`
+      objectToGetParamsString({ url, text: title })}`
     );
     handleClick(link);
   }
@@ -102,7 +102,7 @@ export function useShare(options?: Options) {
 
     const link = (
       `https://twitter.com/intent/tweet${
-      objectToGetParams({
+      objectToGetParamsString({
         url,
         text: title,
         via,

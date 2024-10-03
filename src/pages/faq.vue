@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto grid max-w-screen-2xl grid-cols-[minmax(200px,260px)_1fr_minmax(200px,260px)] items-center max-lg:grid-cols-[minmax(200px,260px)_1fr] max-md:grid-cols-1">
-    <div class="col-start-2 flex justify-center max-lg:px-4 max-md:col-start-1">
-      <div class="mt-8 w-[min(750px,100%)] rounded-xl bg-white px-6 py-5 font-inter">
+    <div class="col-start-2 flex justify-center max-lg:px-4 max-md:col-start-1 max-sm:p-0">
+      <div class="mt-8 w-[min(750px,100%)] rounded-xl bg-white px-6 py-5 font-inter max-md:px-4">
         <div>
           <h1 class="font-inter text-xl font-bold text-[#3B3551]">
             {{ t("title") }}
@@ -16,6 +16,7 @@
               headeraction: 'justify-between gap-4 font-bold text-base hover:text-black px-3 py-4',
               root: 'mb-6 shadow rounded-md',
               content: '!pt-0',
+              headericon: 'shrink-0',
             }"
           >
             <p class="m-0 border-l-2 border-blue-700 px-4 pb-2 text-black/70">

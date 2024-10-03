@@ -5,6 +5,7 @@ export interface RegisterDto {
   email: string
   password?: string
   re_password?: string
+  ib_id?: string
   // job_direction_id: number
   // job_position_id: number
   // hobby_direction_id: number

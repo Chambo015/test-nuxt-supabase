@@ -1,12 +1,13 @@
-export enum SidebarMenuType {
+export enum AppRoutes {
   Main = "/",
   Feed = "/feed",
   Awareness = "/awareness",
   Methodology = "/methodology",
   Profile = "/profile",
   Courses = "/courses",
-  InfosecurityInvitations = "/cabinet-infosecurity/invitations",
+  InfosecurityReferrals = "/cabinet-infosecurity/referrals",
   InfosecurityProgress = "/cabinet-infosecurity/progress",
+  MyCourses = "/my-courses",
 }
 
 // eslint-disable-next-line no-restricted-syntax

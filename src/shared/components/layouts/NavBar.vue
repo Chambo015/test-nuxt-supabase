@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar  z-1 relative flex h-navbarHeight items-center bg-white">
+  <div class="navbar relative z-[9] flex h-navbarHeight items-center bg-white">
     <div class="w-full ">
       <div class="mx-auto flex w-full max-w-screen-2xl items-center justify-between bg-white px-4">
         <NuxtLink to="/">
@@ -83,14 +83,7 @@
             </div>
             {{ $t("actions.login") }}
           </div>
-          <Dropdown
-            v-model="authStore.localLang"
-            class="border-0 bg-white"
-            :langs="true"
-            option-label="name"
-            :options="lang"
-            @change="localSet"
-          />
+          <LangSwitcher class="border-0 bg-white" />
         </div>
       </div>
     </div>
@@ -110,22 +103,21 @@
         </li> -->
         <li class="mb-2 flex h-8 items-center pl-8 pr-4 text-sm">
           <i class="pi pi-globe mr-1"></i>
-          <Dropdown
-            v-model="authStore.localLang"
-            class="w-full border-0"
-            :langs="true"
-            option-label="name"
-            :options="lang"
-            @change="localSet"
-          />
+          <LangSwitcher class="w-full border-0" />
         </li>
-        <li
-          v-if="authStore.isLoggedIn"
-          class="mb-2 flex h-8 items-center border-t border-gray-200 pl-8 pt-4 text-sm"
-          @click="logout()"
-        >
-          <i class="pi pi-sign-out mr-4"></i> {{ $t("actions.logout") }}
-        </li>
+        <template v-if="authStore.isLoggedIn">
+          <li
+            v-for="(item, idx) in profileMenu"
+            :key="`${item.label}_${idx}`"
+            @click="visible = false"
+          >
+            <div v-if="item.separator" class="block h-1 w-full border-b border-gray-200"></div>
+            <NuxtLink v-else class="flex items-center py-4 pl-8 text-sm" :to="item.href" @click="item.call">
+              <span class="mr-4" :class="item.icon"></span>
+              <span v-if="item.localeKey">{{ $t(item.localeKey) }}</span>
+            </NuxtLink>
+          </li>
+        </template>
       </ul>
       <div class="py-3 pl-8">
         <Button
@@ -145,26 +137,13 @@
 import IncidentModal from "../modals/IncidentModal.vue";
 import BaseIcon from "../BaseIcon.vue";
 import { useAuthStore } from "~/shared/store/auth.store";
-import { AuthModalType, SidebarMenuType } from "~/shared/enums/common.enum";
-
-const { setLocale } = useI18n();
+import { AppRoutes, AuthModalType } from "~/shared/enums";
+import { LangSwitcher } from "~/features/langSwitcher";
 
 const router = useRouter();
 const authStore = useAuthStore();
 const visible = ref(false);
 const visibleIncidentModal = ref(false);
-
-const lang = ref([
-  { name: "KK", code: "kz" },
-  { name: "РУ", code: "ru" },
-  { name: "EN", code: "en" },
-]);
-
-function localSet(v: any) {
-  authStore.localLang = v.value;
-  setLocale(v.value.code);
-  window.location.reload();
-}
 
 const profileOpen = ref();
 const profileMenu = computed(() => {
@@ -173,13 +152,13 @@ const profileMenu = computed(() => {
       label: "Профиль",
       localeKey: "actions.profile",
       icon: "pi pi-user",
-      href: "/profile",
+      href: AppRoutes.Profile,
     },
     {
       label: "My courses",
       localeKey: "actions.sideBar.my-courses",
       icon: "pi pi-folder",
-      href: "/my-courses",
+      href: AppRoutes.MyCourses,
     },
     {
       label: "Выход",
@@ -196,7 +175,7 @@ const profileMenu = computed(() => {
           label: "cabinet-infosecurity",
           localeKey: "actions.sideBar.cabinet-infosecurity",
           icon: "pi pi-shield",
-          href: SidebarMenuType.InfosecurityProgress,
+          href: AppRoutes.InfosecurityProgress,
         }]
       : []),
   ];

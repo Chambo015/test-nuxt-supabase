@@ -1,7 +1,7 @@
 <template>
-  <Breadcrumb :home="homeBreadcrumb" :model="itemsBreadcrumb" :pt="{ root: '!overflow-x-hidden', menuitem: 'has-[span.n-last]:truncate' }">
+  <Breadcrumb :home="homeBreadcrumb" :model="itemsBreadcrumb" :pt="{ root: '!overflow-x-hidden', menuitem: 'has-[span.n-last]:truncate has-[.home-icon]:shrink-0 truncate' }">
     <template #item="{ item }">
-      <NuxtLink v-if="item.icon" :to="item.route">
+      <NuxtLink v-if="item.icon" class="home-icon" :to="item.route">
         <BaseIcon
           v-if="item.icon === 'home'"
           color="rgb(107 114 128)"
@@ -10,7 +10,11 @@
         />
       </NuxtLink>
       <NuxtLink v-else :to="item.route">
-        <span class="truncate font-inter text-sm font-medium" :class="item.route.includes('article') ? 'text-main-purple n-last' : 'text-[#475467]'">
+        <span
+          class="truncate font-inter text-sm font-medium"
+          :class="item.route.includes('article') ? 'text-main-purple n-last' : 'text-[#475467] max-w-16'"
+          :title="(item.label as string)"
+        >
           {{ item.label }}
         </span>
       </NuxtLink>
@@ -30,8 +34,13 @@ const homeBreadcrumb = ref({
 });
 
 const itemsBreadcrumb = computed(() => [
-  { label: "Кибергигиена", route: "/awareness" },
-  ...(journalStore.detail ? [{ label: `${journalStore.detail?.module?.name || ""} | Урок ${journalStore.detail?.article?.name || ""}`, route: `/course/1?article=${journalStore.detail?.article?.id}` }] : []),
+  { label: journalStore.detail?.course?.name, route: `/courses/${journalStore.detail?.course?.id}` },
+  ...(journalStore.detail
+    ? [{
+        label: `${journalStore.detail?.module?.name || ""} | Урок ${journalStore.detail?.article?.name || ""}`,
+        route: `/course/${journalStore.detail.course?.id}?article=${journalStore.detail?.article?.id}`,
+      }]
+    : []),
 ]);
 </script>
 

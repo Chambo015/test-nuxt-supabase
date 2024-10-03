@@ -2,15 +2,12 @@
 // locals
 import FetchFactory from "../factory";
 import type { Options } from "../options";
-import { HttpMethod } from "~/shared/enums/http.enum";
-import { Parse } from "~/shared/parse";
-import type { Content, ContentType } from "~/types/content.type";
-import type { ResponseWithMeta } from "~/types/response.type";
 import type { LoginDto } from "~/shared/dto/auth.dto";
-import type { User } from "~/types/user.type";
+import { HttpMethod } from "~/shared/enums/http.enum";
+import type { ReferralGroup, ReferralGroupUser, User } from "~/types/user.type";
 
 class UserModule extends FetchFactory {
-  private RESOURCE = "user";
+  private RESOURCE = "user" as const;
 
   /**
    * @param form {LoginDto}
@@ -29,6 +26,36 @@ class UserModule extends FetchFactory {
     );
   }
 
+  async getReferralGroups(options?: Options<{ data: ReferralGroup[] }>) {
+    return this.call<{ data: ReferralGroup[] }>(
+        `${this.RESOURCE}/get-referral-groups`,
+        {
+          ...options?.fetchOptions,
+          method: HttpMethod.GET,
+        },
+    );
+  }
+
+  async getReferralGroupByCourseId(course_id: number, options?: Options<{ data: ReferralGroupUser[] }>) {
+    if (!course_id) return { data: [] };
+    return this.call<{ data: ReferralGroupUser[] }>(
+        `${this.RESOURCE}/get-referral-group/${course_id}`,
+        {
+          ...options?.fetchOptions,
+          method: HttpMethod.GET,
+        },
+    );
+  }
+
+  async getIBToken(options?: Options<{ token: string }>) {
+    return this.call<{ token: string }>(
+        `${this.RESOURCE}/get-ib-token`,
+        {
+          ...options?.fetchOptions,
+          method: HttpMethod.GET,
+        },
+    );
+  }
   /**
    *
    * @param id {number} Id контента

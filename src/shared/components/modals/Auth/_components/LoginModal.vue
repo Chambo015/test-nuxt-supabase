@@ -108,7 +108,7 @@ const form = defineForm({
     "",
     string().trim().required(t("validation.requiredFieldError")).min(6, t("validation.passwordLengthError")),
   ),
-  recaptcha: field(config.public.SiteMode === "development" /* false */, boolean().oneOf([true], "are you robot?")),
+  recaptcha: field(false, boolean().oneOf([true], "are you robot?")),
 });
 
 async function submit() {
@@ -116,7 +116,7 @@ async function submit() {
   loaderBtn.value = true;
 
   try {
-    if (!form.login.$error && !form.password.$error && !form.recaptcha.$error) {
+    if (!form.login.$error && !form.password.$error && (config.public.SiteMode === "development" || !form.recaptcha.$error)) {
       await AuthRepository.login({
         email: form.login.$value,
         password: form.password.$value,

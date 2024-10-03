@@ -1,6 +1,7 @@
 /* eslint-disable node/prefer-global/process */
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
+
 export default defineNuxtConfig({
   devtools: { enabled: false },
 
@@ -65,18 +66,7 @@ export default defineNuxtConfig({
 
   modules: [
     "@nuxt/eslint",
-    [
-      "@nuxtjs/i18n",
-      {
-        vueI18n: "./i18n.config.ts",
-        jit: true,
-        strictMessage: false,
-        escapeHtml: false,
-        compilation: {
-          strictMessage: false,
-        },
-      },
-    ],
+    "@nuxtjs/i18n",
     "@nuxtjs/tailwindcss", // "@nuxtjs/color-mode" https://tailwindcss.nuxtjs.org/examples/dark-mode
     "nuxt-primevue",
     "vue3-carousel-nuxt",
@@ -120,6 +110,7 @@ export default defineNuxtConfig({
   routeRules: {
     "/course/**": { ssr: false },
     "/cabinet-infosecurity": { redirect: "/cabinet-infosecurity/progress", ssr: false },
+    "/courses/1": { redirect: "/awareness" },
   },
 
   nitro: {
@@ -136,6 +127,16 @@ export default defineNuxtConfig({
     config: {
       standalone: false,
     },
+  },
+
+  i18n: {
+    vueI18n: "./i18n.config.ts",
+    compilation: {
+      strictMessage: false,
+      escapeHtml: false,
+      jit: true,
+    },
+    defaultLocale: "ru",
   },
 
   primevue: {

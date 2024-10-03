@@ -84,6 +84,16 @@ class FinanceModule extends FetchFactory {
     );
   }
 
+  async sendMailToParticipant(participantId: number | string, options?: Options<boolean>) {
+    return this.call<boolean>(
+      `${this.RESOURCE}/participant/send-mail/${participantId}`,
+      {
+        ...options?.fetchOptions,
+        method: HttpMethod.PUT,
+      },
+    );
+  }
+
   async checkGroupIsFilled(groupId: string | number, options?: Options<unknown>) {
     return this.call<unknown>(
       `${this.RESOURCE}/participant/check-group-is-filled/${groupId}`,

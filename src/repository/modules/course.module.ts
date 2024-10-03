@@ -54,15 +54,15 @@ class CourseModule extends FetchFactory {
   /**
    * Получаем все модули
    */
-  async getModules(options?: Options<{ data: Module[] }>) {
-    return useAsyncData(() => this.call<{ data: Module[] }>(
-      `${this.RESOURCE}/module`,
-      {
-        ...options?.fetchOptions,
-        method: HttpMethod.GET,
-      },
-    ), { ...options?.asyncDataOptions, lazy: true });
-  }
+  // async getModules(options?: Options<{ data: Module[] }>) {
+  //   return useAsyncData(() => this.call<{ data: Module[] }>(
+  //     `${this.RESOURCE}/module`,
+  //     {
+  //       ...options?.fetchOptions,
+  //       method: HttpMethod.GET,
+  //     },
+  //   ), { ...options?.asyncDataOptions, lazy: true });
+  // }
 
   /**
    * Получаем только модули определенного курса по его id
@@ -71,14 +71,14 @@ class CourseModule extends FetchFactory {
    * @returns Module[]
    */
   async getModulesByCourseId(course_id: number, options?: Options<{ data: Module[] }>) {
-    return useAsyncData(() => this.call<{ data: Module[] }>(
+    return this.call<{ data: Module[] }>(
       `${this.RESOURCE}/module`,
       {
         ...options?.fetchOptions,
         method: HttpMethod.GET,
         params: { course_id },
       },
-    ), { ...options?.asyncDataOptions, lazy: true });
+    );
   }
 
   /**
@@ -88,21 +88,16 @@ class CourseModule extends FetchFactory {
    * @returns Lesson[]
    */
   async getLessonsByModuleId(module_id: MaybeRefOrGetter<number | undefined>, options?: Options<{ data: Lesson[] }>) {
-    return useAsyncData(`lessons-${toValue(module_id)}`, () => {
-      if (!toValue(module_id)) return Promise.resolve({ data: [] });
+    if (!toValue(module_id)) return Promise.resolve({ data: [] });
 
-      return this.call<{ data: Lesson[] }>(
+    return this.call<{ data: Lesson[] }>(
         `${this.RESOURCE}/article`,
         {
           ...options?.fetchOptions,
           method: HttpMethod.GET,
           params: { module_id: toValue(module_id) },
         },
-      );
-    }, {
-      ...options?.asyncDataOptions,
-      lazy: true,
-    });
+    );
   }
 
   async getCertificates(journal_id: number, options?: Options<{ data: Journal }>) {

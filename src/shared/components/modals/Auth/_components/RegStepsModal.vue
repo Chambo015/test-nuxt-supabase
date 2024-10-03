@@ -118,8 +118,10 @@ import { string } from "yup";
 import { RegExpPassword } from "~/shared/utils/regexp";
 import { AuthRepository } from "~/shared/repository/auth.repository";
 import HeaderStepForm from "~/shared/components/forms/_blocks/HeaderStepForm.vue";
+import { useReferralToken } from "~/shared/composables/useReferralToken";
 
 const { t } = useI18n();
+const { getReferralToken, removeReferralToken } = useReferralToken();
 
 const strengthLevelPassword = {
   "weak-label": "Не надежный пароль",
@@ -148,6 +150,7 @@ async function onSubmit() {
   try {
     isLoading.value = true;
     if (isValidForm(form)) {
+      const refToken = getReferralToken();
       await AuthRepository.regis({
         name: form.name.$value,
         last_name: "",
@@ -155,7 +158,9 @@ async function onSubmit() {
         email: form.email.$value,
         password: form.password.$value,
         re_password: form.password.$value,
+        ib_id: refToken || undefined,
       });
+      removeReferralToken();
     }
   } catch (error) {
     console.error("@regis", error);

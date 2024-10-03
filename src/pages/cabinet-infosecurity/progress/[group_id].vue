@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { AdapterParticipants, ParticipantsDataTable } from "~/features/cabinet-infosecurity/participants";
+import { AdapterParticipants, ParticipantsDataTable } from "~/features/cabinetInfosecurity/participants";
 import { Parse } from "~/shared/parse";
 
 const route = useRoute();

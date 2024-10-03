@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <div class="mx-auto max-w-[930px] max-lg:px-4">
+      <div class="mx-auto max-w-[930px] max-lg:px-4 max-[930px]:overflow-x-hidden">
         <div class="header">
           <div class="info relative ">
             <img aria-hidden="true" class="head-img pointer-events-none absolute select-none" src="@/assets/images/main-header.png" />
@@ -10,14 +10,14 @@
                 <MainHeader
                   bg-color="primary"
                   class="text-nowrap !leading-[0.85] max-xl:!text-[70px] max-md:!text-4xl max-md:font-bold max-sm:text-wrap"
-                  :class="[$i18n.locale === 'kz' && 'max-w-fit text-[80px]', $i18n.locale === 'ru' && '!text-[100px] max-sm:!text-3xl max-[386px]:w-min', $i18n.locale === 'en' && '!text-[90px] max-[430px]:max-w-[270px]']"
+                  :class="[$i18n.locale === 'kz' && 'max-w-fit text-[80px]', $i18n.locale === 'ru' && '!text-[100px] max-sm:!text-3xl min-[350px]:!text-nowrap', $i18n.locale === 'en' && '!text-[90px] max-[430px]:max-w-[270px]']"
                 >
                   {{ $t("pages.main.head.title_1") }}
                 </MainHeader>
                 <MainHeader
                   bg-color="secondary"
                   class="!leading-[0.9] max-xl:!text-[70px] max-md:!text-4xl max-md:font-bold"
-                  :class="[$i18n.locale === 'kz' && 'max-w-[740px] text-[80px] max-[660px]:max-w-[500px]', $i18n.locale === 'ru' && '!text-[100px] max-[670px]:max-w-[380px] max-sm:!text-3xl md:w-min', $i18n.locale === 'en' && '!text-[90px] max-[905px]:max-w-[570px] max-[500px]:max-w-[320px] xl:text-nowrap']"
+                  :class="[$i18n.locale === 'kz' && 'max-w-[740px] text-[80px] max-[660px]:max-w-[500px]', $i18n.locale === 'ru' && '!text-[100px] max-[675px]:!w-min max-sm:!text-3xl md:!w-min', $i18n.locale === 'en' && '!text-[90px] max-[905px]:max-w-[570px] max-[500px]:max-w-[320px] xl:text-nowrap']"
                 >
                   {{ $t("pages.main.head.title_2") }}
                 </MainHeader>
