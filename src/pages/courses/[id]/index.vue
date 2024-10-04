@@ -7,7 +7,7 @@
       <Waves />
     </div>
     <div v-if="course?.data" class="relative col-span-1 col-start-2 overflow-x-hidden max-lg:px-4 max-md:col-start-1">
-      <header class="max-[440px]:py-[60px] flex min-h-[750px] flex-col items-start py-[140px] max-md:min-h-[450px] max-sm:py-[100px]">
+      <header class="flex min-h-[750px] flex-col items-start py-[140px] max-md:min-h-[450px] max-sm:py-[100px] max-[440px]:py-[60px]">
         <TopHeader>
           <p class="font-NeueMachina text-3xl text-white max-md:text-2xl">
             {{ $t("pages.awareness.course") }}
@@ -21,7 +21,7 @@
         </MainHeader>
         <TopHeader class="ml-auto">
           <p class="font-NeueMachina text-3xl text-white max-md:text-lg">
-            {{ course.data.is_free ? "Бесплатно" : `Стоимость: ${course.data.price} тг` }}
+            {{ course.data.is_free ? "Бесплатно" : `Стоимость: ${course.data.adaptedPrice} тг` }}
           </p>
         </TopHeader>
         <div class="mt-6 max-md:w-full">
@@ -40,6 +40,7 @@
 </template>
 
 <script setup lang="ts">
+import { AdapterCourse } from "~/entities/course";
 import { CourseCurriculum } from "~/features/courses/courseCurriculum";
 import { CourseListDescription } from "~/features/courses/courseDescriptionSheet";
 import { PayStartCourseButton, useStartCourse } from "~/features/startCourse";
@@ -61,10 +62,18 @@ definePageMeta({
 const { $module } = useNuxtApp();
 const { id: courseId } = useRoute().params;
 
-const { data: course } = useLazyAsyncData(`course-${courseId}`, async () => await $module.course.getCourseById(+courseId as number), { server: false });
+const { data: course } = useLazyAsyncData(`course-${courseId}`, async () => await $module.course.getCourseById(+courseId as number), {
+  server: false,
+  transform(res) {
+    return {
+      ...res,
+      data: new AdapterCourse(res.data).adapt(),
+    };
+  },
+});
 
 const paymentsStore = usePaymentsStore();
-const { startCourse } = useStartCourse(() => course?.value && course.value.data, {
+const { startCourse } = useStartCourse(() => course?.value?.data || null, {
   callPayCourse(onSuccess) {
     if (!course?.value?.data) return;
     paymentsStore.showModal({ currentBuyCourse: course?.value?.data, onSuccessPay: onSuccess });

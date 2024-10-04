@@ -32,7 +32,7 @@ function handleBuyCourse(e: MouseEvent, course: Course) {
 
   if (course.id === 1) {
     return navigateTo("/awareness");
-  } else if (+course.price > 0) {
+  } else {
     // if (course.is_purchased) return toast.add({ severity: "warn", summary: "Оплачено", detail: "Курс уже приобретен", life: 3000 });
     startCourse();
   }

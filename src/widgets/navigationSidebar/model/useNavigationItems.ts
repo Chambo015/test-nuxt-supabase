@@ -42,11 +42,17 @@ export function useNavigationItems() {
     },
   ];
 
+  // TODO: move to Prod
   const DevItemsList: NavigationItemType[] = [
     {
       name: "actions.sideBar.all-courses",
       icon: "courses",
       path: AppRoutes.Courses,
+    },
+    {
+      name: "actions.sideBar.about",
+      icon: "about",
+      path: AppRoutes.About,
     },
   ];
 

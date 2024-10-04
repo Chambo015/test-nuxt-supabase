@@ -8,6 +8,7 @@ export enum AppRoutes {
   InfosecurityReferrals = "/cabinet-infosecurity/referrals",
   InfosecurityProgress = "/cabinet-infosecurity/progress",
   MyCourses = "/my-courses",
+  About = "/about",
 }
 
 // eslint-disable-next-line no-restricted-syntax

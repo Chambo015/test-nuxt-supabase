@@ -1,7 +1,7 @@
 <template>
   <div class="absolute inset-0 max-md:hidden ">
     <div class="relative mx-auto h-full max-w-screen-2xl">
-      <div
+      <aside
         class="sidebar absolute left-0 top-0 z-[9] h-full py-[30px] transition-all duration-300"
         :class="[isCollapse ? 'w-miniSidebarWidth' : 'w-sidebarWidth']"
       >
@@ -46,7 +46,7 @@
                 </NuxtLink>
               </li>
             </ul>
-            <div v-if="!isCollapse" class="pl-[30px] pt-5 text-[#6f7f95]">
+            <!-- <section v-if="!isCollapse" class="pl-[30px] pt-5 text-[#6f7f95]">
               <button
                 class="flex items-center justify-between whitespace-nowrap py-2 text-left text-sm font-medium"
                 @click="linksOpen = !linksOpen"
@@ -64,10 +64,10 @@
                   </NuxtLink>
                 </li>
               </ul>
-            </div>
+            </section> -->
           </nav>
         </div>
-      </div>
+      </aside>
     </div>
   </div>
 </template>
@@ -79,7 +79,7 @@ import BaseIcon from "~/shared/components/BaseIcon.vue";
 
 const route = useRoute();
 const isCollapse = ref(true);
-const linksOpen = ref(false);
+// const linksOpen = ref(false);
 const menuActive = ref(route.path);
 const contentStore = useContentStore();
 
@@ -97,7 +97,6 @@ function handleClickLink(item: NavigationItemType) {
 .sidebar {
   .bg-btn-back {
     background-color: #f5f5f5;
-
     &:hover {
       background-color: var(--purple-100);
     }

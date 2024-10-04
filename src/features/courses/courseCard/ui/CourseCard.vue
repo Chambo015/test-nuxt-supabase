@@ -12,7 +12,7 @@
     />
     <div class="flex flex-row items-center justify-between self-stretch">
       <Chip
-        :label="course.is_purchased ? 'Приобретен' : course.price === 0 ? 'Бесплатный курс' : `${course.price} тг`"
+        :label="course.is_purchased ? 'Приобретен' : course.is_free ? 'Бесплатный курс' : `${course.adaptedPrice} тг`"
         :pt="{
           root: ['!px-2.5 !text-sm', course.price === 0 ? '!text-[#90D272] !bg-[#90D272]/10' : '!text-[#EB6A6A] !bg-[#EB6A6A]/10'],
           label: '!my-0',
@@ -30,10 +30,11 @@
 </template>
 
 <script setup lang="ts">
+import type { AdapterCourseReturnType } from "~/entities/course";
 import type { Course } from "~/types/course.type";
 
 defineProps<{
-  course: Course
+  course: AdapterCourseReturnType
 }>();
 
 async function handleClickCourse(course: Course) {

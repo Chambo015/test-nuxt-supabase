@@ -47,7 +47,7 @@
                         v-model="steps[0].countInvite.$value"
                         :aria-describedby="`${form.countInvite.$label}-help`"
                         :input-id="form.countInvite.$label"
-                        :max="50"
+                        :max="MAX_PARTICIPANTS_INVITE"
                         :min="0"
                         mode="decimal"
                         placeholder="Количество пользователей"
@@ -169,11 +169,12 @@
 </template>
 
 <script setup lang="ts">
-import { ReturnTypeStep } from "../config";
+import { MAX_PARTICIPANTS_INVITE, ReturnTypeStep } from "../config";
 import { useFormBuyCourse, useTipTopPay } from "~/features/finance";
 import HeaderStepForm from "~/shared/components/forms/_blocks/HeaderStepForm.vue";
 import { Parse } from "~/shared/parse";
 import { usePaymentsStore } from "~/shared/store/payments.store";
+import { thousandSeparator } from "~/shared/utils";
 
 const FAILED = ReturnTypeStep.FAILED;
 const SUCCESS = ReturnTypeStep.SUCCESS;
@@ -239,7 +240,7 @@ const { steps, goToPrev, isLoading, onSubmit, submitted, form, currentStepIdx } 
   },
 });
 
-const totalPrice = computed(() => (paymentsStore.currentBuyCourse?.price || 0) * (form.countInvite.$value || 1));
+const totalPrice = computed(() => thousandSeparator((paymentsStore.currentBuyCourse?.price || 0) * (form.countInvite.$value || 1)));
 </script>
 
 <style scoped>

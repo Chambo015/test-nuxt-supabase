@@ -13,6 +13,11 @@ export function isPromise(obj: any): obj is Promise<unknown> {
   return !!obj && (typeof obj === "object" || typeof obj === "function") && typeof obj.then === "function";
 }
 
+/**
+ * Template
+ * @param object {era: 123, zha: 'str'}
+ * @returns "?era=123&zha=str"
+ */
 export function objectToGetParamsString(object: {
   [key: string]: string | number | undefined | null
 }) {
@@ -53,5 +58,20 @@ export async function copyText(text: string): Promise<string | null> {
       ta.remove();
       return null;
     }
+  }
+}
+
+export function thousandSeparator(amount: any, separator = " ") {
+  if (
+    amount !== ""
+    && amount !== undefined
+    && +amount !== 0
+    && amount !== "0"
+    && amount !== null
+  ) {
+    const removeNonNumeric = amount.toString().replace(/\D/g, "");
+    return removeNonNumeric.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+  } else {
+    return "";
   }
 }

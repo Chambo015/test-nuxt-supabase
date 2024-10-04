@@ -43,6 +43,7 @@
 </template>
 
 <script setup lang="ts">
+import { AdapterCourse } from "~/entities/course";
 import { CourseCard, SkeletonCourseCard } from "~/features/courses/courseCard";
 import { PayStartCourseButton } from "~/features/startCourse";
 import BaseIcon from "~/shared/components/BaseIcon.vue";
@@ -61,5 +62,13 @@ const itemsBreadcrumb = ref([{ label: "Все курсы", route: "/courses" }])
 
 const { $module } = useNuxtApp();
 
-const { data, pending } = useLazyAsyncData("all-courses", async () => await $module.course.getAllCourses(), { server: false });
+const { data, pending } = useLazyAsyncData("all-courses", async () => await $module.course.getAllCourses(), {
+  server: false,
+  transform(res) {
+    return {
+      ...res,
+      data: res.data.map(course => new AdapterCourse(course).adapt()),
+    };
+  },
+});
 </script>

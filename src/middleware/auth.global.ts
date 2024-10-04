@@ -9,6 +9,11 @@ export default defineNuxtRouteMiddleware(async (to) => {
     return navigateTo("/", { replace: true });
   }
 
+  // hide cabinet IS if user is just client
+  if (to.meta.cabinetIS && !authStore?.user?.is_ib) {
+    return navigateTo("/", { replace: true });
+  }
+
   // hide from authorized users
   if (to.meta.hideAuth && authStore.isLoggedIn) {
     return navigateTo("/", { replace: true });

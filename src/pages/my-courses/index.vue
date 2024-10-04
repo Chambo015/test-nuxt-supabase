@@ -23,7 +23,7 @@
                 <MyCourseCard
                   :is-free="item.is_free"
                   :poster-src="item.poster"
-                  :price="`${item.price} тг`"
+                  :price="`${item.adaptedPrice} тг`"
                   :status="item.status"
                   :title-course="item.name"
                 />

@@ -451,10 +451,10 @@
   top: 50%;
   transform: rotate(25deg);
 }
-path {
+/* path {
   stroke-dasharray: 1800;
-  stroke-dashoffset: 0;
-  animation: dash 3s linear 0s forwards;
+  stroke-dashoffset: 1800;
+  animation: dash 2s linear forwards;
 }
 @keyframes dash {
   0% {
@@ -464,5 +464,5 @@ path {
   100% {
     stroke-dashoffset: 0;
   }
-}
+} */
 </style>

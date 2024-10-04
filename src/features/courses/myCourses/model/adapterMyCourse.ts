@@ -1,16 +1,5 @@
-import type { JournalDetail } from "~/types/journal.type";
+import { thousandSeparator } from "~/shared/utils";
 import type { Course as CourseDTO } from "~/types/course.type";
-
-// export function getStatusMyCourse(JournalDetail: JournalDetail) {
-//   const { $i18n } = useNuxtApp();
-
-//   if (JournalDetail.journal?.is_done) {
-//     return $i18n.t("message.courseDone");
-//   }
-//   if (JournalDetail.module?.name) {
-//     return JournalDetail.module?.name;
-//   }
-// }
 
 export class MyCourseAdapter {
   private target: CourseDTO;
@@ -21,6 +10,9 @@ export class MyCourseAdapter {
   }
 
   get status() {
+    if (this.target.journal?.is_done) {
+      return this.i18n("message.courseDone");
+    }
     if (this.target.current_journal_detail) {
       const journalDetail = this.target.current_journal_detail;
 
@@ -34,10 +26,15 @@ export class MyCourseAdapter {
     return "Not Status";
   }
 
+  protected get adaptedPrice() {
+    return thousandSeparator(this.target.price);
+  }
+
   adapt() {
     return {
       ...this.target,
       status: this.status,
+      adaptedPrice: this.adaptedPrice,
     };
   }
 };
