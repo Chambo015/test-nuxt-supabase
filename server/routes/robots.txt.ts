@@ -15,6 +15,7 @@ Allow: /feed/*
 Allow: /policy
 Allow: /service
 Allow: /faq
+Allow: /courses
 
 Disallow: /profile
 Disallow: /payments

@@ -3,16 +3,16 @@
     <FeedSkeleton v-if="pending && !feed" />
     <div v-else class="relative mx-auto max-w-[600px] pt-10">
       <div class="path flex items-center gap-2 max-md:px-4">
-        <NuxtLink to="/">
+        <LocalizatedLink to="/">
           <BaseIcon color="rgb(107 114 128)" name="home-path" width="40" />
-        </NuxtLink>
+        </LocalizatedLink>
         <i class="pi pi-angle-right text-gray-400"></i>
 
-        <NuxtLink :to="`/feed?type_id=${feed?.type?.id}`">
+        <LocalizatedLink :to="`/feed?type_id=${feed?.type?.id}`">
           <p class="text-nowrap text-sm text-gray-600">
             {{ feed?.type?.name }}
           </p>
-        </NuxtLink>
+        </LocalizatedLink>
         <i class="pi pi-angle-right text-gray-400"></i>
         <p class="w-full truncate text-nowrap text-sm font-bold text-violet-600">
           {{ feed?.name }}
@@ -93,16 +93,16 @@
             <p class="mb-8 font-NeueMachina text-[20px] font-medium !leading-none">
               {{ $t(relatedCyberModule.locale) }}
             </p>
-            <NuxtLink
+            <LocalizatedLink
               class="hover-link-effect mt-auto flex items-center self-start font-inter font-semibold"
               :to="relatedCyberModule.link"
             >
               {{ $t('actions.moreButton') }} <i class="pi pi-arrow-up ml-3 rotate-45 text-sm"></i>
-            </NuxtLink>
+            </LocalizatedLink>
           </div>
         </div>
       </div>
-      <FeedsRecommended v-if="tagsFeed" :exclude-feed-id="feed.id" :tags="tagsFeed" />
+      <FeedsRecommended v-if="tagsFeed" :exclude-feed-id="feed?.id" :tags="tagsFeed" />
     </div>
   </div>
 </template>
@@ -117,6 +117,7 @@ import { useFeedById } from "~/shared/composables/api/useFeedById";
 import { LigthenColor } from "~/shared/utils/lighten-color";
 import ShareModal from "~/shared/components/modals/ShareModal.vue";
 import { METHODOLOGY_ARTICLES } from "~/shared/constants";
+import { LocalizatedLink } from "~/shared/ui";
 
 const authStore = useAuthStore();
 const { isDesktop } = useDevice();

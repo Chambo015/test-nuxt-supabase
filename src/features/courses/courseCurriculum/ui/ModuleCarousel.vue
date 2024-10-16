@@ -7,15 +7,16 @@
       v-else
       id="thumbnails"
       v-model="currentModuleIdxComputed"
-      :breakpoints="breakpointsThumbnails"
-      :mouse-drag="true"
       v-bind="settingsThumbnails"
-      snap-align="start"
+      :breakpoints="breakpointsThumbnails"
+      :items-to-show="$device.isDesktop ? 6.5 : $device.isTablet ? 3.5 : 2.5"
+      :mouse-drag="true"
+      :snap-align="$device.isDesktop ? 'start' : 'center'"
       :wrap-around="false"
     >
       <VueSlide v-for="(m, idx) in data" :key="m.id">
         <div class="!mr-3 pb-2" :class="[currentModuleIdx === idx ? 'active_module' : '']">
-          <button class="carousel__item relative aspect-square w-full cursor-pointer overflow-hidden rounded-3xl border-4" :class="[currentModuleIdx === idx ? 'border-[#8b5cf6]' : 'border-transparent']" @click="currentModuleIdx = idx">
+          <button class="carousel__item relative aspect-square w-full cursor-pointer overflow-hidden rounded-3xl border-4" :class="[currentModuleIdx === idx ? 'border-[#8b5cf6]' : 'border-transparent']" @click.stop.prevent="currentModuleIdx = idx">
             <img
               class="size-full rounded-3xl object-cover transition-transform"
               :class="[currentModuleIdx === idx ? 'scale-110' : 'scale-100']"
@@ -43,7 +44,7 @@ defineProps<{
 const currentModuleIdx = defineModel("currentModuleIdx");
 const currentModuleIdxComputed = computed(() => currentModuleIdx.value);
 
-const breakpointsThumbnails = {
+const breakpointsThumbnails = reactive({
   700: {
     itemsToShow: 3.5,
     snapAlign: "center",
@@ -52,7 +53,7 @@ const breakpointsThumbnails = {
     itemsToShow: 6.5,
     snapAlign: "start",
   },
-};
+});
 
 const settingsThumbnails = {
   itemsToShow: 2.5,

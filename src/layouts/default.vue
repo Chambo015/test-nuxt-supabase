@@ -16,7 +16,7 @@
       <Toast />
     </Teleport>
     <FAQWidget />
-    <Transition
+    <!-- <Transition
       enter-active-class=""
       enter-from-class=""
       leave-active-class="transition-all duration-500"
@@ -24,7 +24,7 @@
     >
       <div v-if="loading" class="fixed inset-0 z-[8] bg-main-bg">
       </div>
-    </Transition>
+    </Transition> -->
   </div>
 </template>
 
@@ -49,10 +49,14 @@ useSeoMeta({
 
 const authStore = useAuthStore();
 const paymentsStore = usePaymentsStore();
-const { setLocale } = useI18n({ useScope: "global" });
+const { locale } = useI18n({ useScope: "global" });
 const { saveReferralToken } = useReferralToken();
 
-setLocale(authStore.localLang.code);
+useHead({
+  htmlAttrs: {
+    lang: locale,
+  },
+});
 
 onMounted(() => {
   if (authStore.isLoggedIn) {

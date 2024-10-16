@@ -40,10 +40,6 @@ export function useNavigationItems() {
       icon: "methodology",
       path: AppRoutes.Methodology,
     },
-  ];
-
-  // TODO: move to Prod
-  const DevItemsList: NavigationItemType[] = [
     {
       name: "actions.sideBar.all-courses",
       icon: "courses",
@@ -55,6 +51,8 @@ export function useNavigationItems() {
       path: AppRoutes.About,
     },
   ];
+
+  const DevItemsList: NavigationItemType[] = [];
 
   const computedSidebarItemsList = computed<NavigationItemType[]>(() => {
     // Сайдбар у кабинета ИБ

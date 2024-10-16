@@ -16,18 +16,26 @@
 </template>
 
 <script setup lang="ts">
+import { Parse } from "~/shared/parse";
 import type { ContentType } from "~/types/content.type";
 
-withDefaults(defineProps<{ types?: ContentType[], isLoading: boolean }>(), {
+const props = withDefaults(defineProps<{ types?: ContentType[], isLoading: boolean, defaultTypeId: number | "All" }>(), {
   types: () => [],
+  defaultTypeId: "All",
 });
 const emit = defineEmits<{
   (e: "change", value: { id: "All" | number }): void
 }>();
 
-const selectedType = ref();
+const selectedType = ref<number>();
 
 function onChange(e: { value: number | null }) {
   emit("change", { id: e.value ? e.value : "All" });
 }
+
+watch(() => props.types, (types) => {
+  if (types.length <= 0) return;
+  const defaultType = types.find(t => t.id === Parse.number(props.defaultTypeId));
+  selectedType.value = defaultType?.id || undefined;
+});
 </script>

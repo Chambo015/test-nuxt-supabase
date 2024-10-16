@@ -1,128 +1,131 @@
 <template>
   <div class="progamma py-20 max-md:py-10">
-    <div class="head">
-      <p class="font-bold">
-        {{ $t("pages.awareness.progamma.title") }}
-      </p>
-      <span class="text-gray-500">
-        {{ $t("pages.awareness.progamma.note") }}
-      </span>
-    </div>
-    <ModuleCarousel
-      v-model:current-module-idx="currentModuleIdx"
-      :data="modules?.data || []"
-      :loading="pending"
-    />
-    <div class="module-bg relative rounded-3xl">
-      <VueCarousel
-        id="gallery"
-        v-model="currentModuleIdx"
-        :items-to-show="1"
-        :mouse-drag="false"
-        :touch-drag="false"
-        :wrap-around="false"
-      >
-        <VueSlide v-for="m in modules?.data" :key="m.id">
-          <div class="carousel__item w-full p-16 text-left max-md:px-4 max-md:py-6">
-            <header class="grid w-full grid-cols-[70px_1fr_130px] items-start gap-x-3 max-md:grid-cols-1">
-              <div class="inline-flex items-center justify-start">
-                <div class="relative ">
-                  <img class="size-[70px] rounded-full object-cover" :src="m.photo" />
-                  <svg class="circle_wrap" fill="none" viewBox="0 0 72 70" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M37.4 1C14.0667 1 1 12.6074 1 32.6712C1 52.7351 10.3333 69 33.6667 69C57 69 71 57.8583 71 37.7945C71 17.7307 60.7333 1 37.4 1Z"
-                      stroke="#dcff98"
-                      stroke-dasharray="5 10.45"
-                      stroke-linecap="round"
-                      stroke-width="3"
-                    />
-                  </svg>
+    <ClientOnly>
+      <div class="head">
+        <p class="font-bold">
+          {{ $t("pages.awareness.progamma.title") }}
+        </p>
+        <span class="text-gray-500">
+          {{ $t("pages.awareness.progamma.note") }}
+        </span>
+      </div>
+      <ModuleCarousel
+        v-model:current-module-idx="currentModuleIdx"
+        :data="modules?.data || []"
+        :loading="pending"
+      />
+      <div class="module-bg relative rounded-3xl">
+        <VueCarousel
+          id="gallery"
+          v-model="currentModuleIdxComputed"
+          :items-to-show="1"
+          :mouse-drag="false"
+          :touch-drag="false"
+          :wrap-around="false"
+        >
+          <VueSlide v-for="m in modules?.data" :key="m.id">
+            <div class="carousel__item w-full p-16 text-left max-md:px-4 max-md:py-6">
+              <header class="grid w-full grid-cols-[70px_1fr_130px] items-start gap-x-3 max-md:grid-cols-1">
+                <div class="inline-flex items-center justify-start">
+                  <div class="relative ">
+                    <img class="size-[70px] rounded-full object-cover" :src="m.photo" />
+                    <svg class="circle_wrap" fill="none" viewBox="0 0 72 70" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M37.4 1C14.0667 1 1 12.6074 1 32.6712C1 52.7351 10.3333 69 33.6667 69C57 69 71 57.8583 71 37.7945C71 17.7307 60.7333 1 37.4 1Z"
+                        stroke="#dcff98"
+                        stroke-dasharray="5 10.45"
+                        stroke-linecap="round"
+                        stroke-width="3"
+                      />
+                    </svg>
+                  </div>
                 </div>
-              </div>
-              <div class="mt-3 sm:ml-3 sm:mt-0">
-                <p class="font-NeueMachina text-2xl text-white max-md:text-xl">
-                  {{ m.name }}
-                </p>
-              </div>
-              <div v-if="$device.isDesktop" class="flex justify-end">
-                <Button
-                  class="!size-14 shrink-0 rounded-full border-0 !bg-[#dcff98] text-2xl hover:bg-lime-400"
-                  icon="pi pi-angle-left"
-                  icon-class="text-gray-700 text-4xl"
-                  rounded
-                  @click="prev"
-                />
-                <Button
-                  class="ml-2 !size-14 shrink-0 rounded-full border-0 !bg-[#dcff98] text-2xl hover:bg-lime-400"
-                  icon="pi pi-angle-right"
-                  icon-class="text-gray-600 text-4xl"
-                  rounded
-                  @click="next"
-                />
-              </div>
-            </header>
-            <template v-if="pending || pendingLesson || !lessons?.data">
-              <SkeletonModulesSlide class="mt-12 max-md:mt-7" />
-            </template>
-            <template v-else>
-              <div v-if="lessons?.data.length" class="relative w-full pt-12 max-md:pt-7">
-                <VueCarousel
-                  ref="carousel"
-                  v-bind="settingsLessonCarousel"
-                  :breakpoints="breakpointsLessonCarousel"
-                  class="items-start"
-                  snap-align="start"
-                >
-                  <VueSlide v-for="slide in lessons.data" :key="slide.id">
-                    <div class="module-card">
-                      <div class="video relative overflow-hidden rounded-2xl" @click="handleClickLesson(slide)">
-                        <img class="size-full object-cover" :src="slide.photo" />
-                        <img
-                          class="play absolute size-12"
-                          src="@/assets/images/icons/play.png"
-                        />
+                <div class="mt-3 sm:ml-3 sm:mt-0">
+                  <p class="font-NeueMachina text-2xl text-white max-md:text-xl">
+                    {{ m.name }}
+                  </p>
+                </div>
+                <div v-if="$device.isDesktop" class="flex justify-end">
+                  <Button
+                    class="!size-14 shrink-0 rounded-full border-0 !bg-[#dcff98] text-2xl hover:bg-lime-400"
+                    icon="pi pi-angle-left"
+                    icon-class="text-gray-700 text-4xl"
+                    rounded
+                    @click="prev"
+                  />
+                  <Button
+                    class="ml-2 !size-14 shrink-0 rounded-full border-0 !bg-[#dcff98] text-2xl hover:bg-lime-400"
+                    icon="pi pi-angle-right"
+                    icon-class="text-gray-600 text-4xl"
+                    rounded
+                    @click="next"
+                  />
+                </div>
+              </header>
+              <template v-if="pending || pendingLesson || !lessons?.data">
+                <SkeletonModulesSlide class="mt-12 max-md:mt-7" />
+              </template>
+              <template v-else>
+                <div v-if="lessons?.data.length" class="relative w-full pt-12 max-md:pt-7">
+                  <VueCarousel
+                    ref="carousel"
+                    v-bind="settingsLessonCarousel"
+                    :breakpoints="breakpointsLessonCarousel"
+                    class="items-start"
+                    snap-align="start"
+                  >
+                    <VueSlide v-for="slide in lessons.data" :key="slide.id">
+                      <div class="module-card">
+                        <div class="video relative overflow-hidden rounded-2xl" @click="handleClickLesson(slide)">
+                          <img class="size-full object-cover" :src="slide.photo" />
+                          <img
+                            class="play absolute size-12"
+                            src="@/assets/images/icons/play.png"
+                          />
+                        </div>
+                        <p class="mt-2 text-left text-white">
+                          <span class="line-clamp-3 text-base font-bold">{{ slide.name }}</span>
+                        </p>
                       </div>
-                      <p class="mt-2 text-left text-white">
-                        <span class="line-clamp-3 text-base font-bold">{{ slide.name }}</span>
-                      </p>
-                    </div>
-                  </VueSlide>
-                </VueCarousel>
-              </div>
-            </template>
-          </div>
-        </VueSlide>
-      </VueCarousel>
-    </div>
-    <Dialog
-      v-model:visible="visibleModalVideoLesson"
-      dismissable-mask
-      header=" "
-      mask
-      modal
-      :style="{ width: 'min(400px,90%)' }"
-    >
-      <div class="flex w-full flex-col items-center">
-        <div class="inline-block w-full shrink-0 max-md:mx-auto">
-          <div style="position: relative; padding-top: 177.78%; width: 100%">
-            <iframe
-              allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write;"
-              allowfullscreen
-              frameborder="0"
-              :src="currentPublicLesson?.link"
-              style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"
-            ></iframe>
+                    </VueSlide>
+                  </VueCarousel>
+                </div>
+              </template>
+            </div>
+          </VueSlide>
+        </VueCarousel>
+      </div>
+      <Dialog
+        v-model:visible="visibleModalVideoLesson"
+        dismissable-mask
+        header=" "
+        mask
+        modal
+        :style="{ width: 'min(400px,90%)' }"
+      >
+        <div class="flex w-full flex-col items-center">
+          <div class="inline-block w-full shrink-0 max-md:mx-auto">
+            <div style="position: relative; padding-top: 177.78%; width: 100%">
+              <iframe
+                allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write;"
+                allowfullscreen
+                frameborder="0"
+                :src="currentPublicLesson?.link"
+                style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"
+              ></iframe>
+            </div>
           </div>
         </div>
-      </div>
-    </Dialog>
+      </Dialog>
+    </ClientOnly>
   </div>
 </template>
 
 <script setup lang="ts">
+import { usePublicLesson } from "../model/";
 import ModuleCarousel from "./ModuleCarousel.vue";
 import SkeletonModulesSlide from "./SkeletonModulesSlide.vue";
-import { usePublicLesson } from "~/features/courses/courseCurriculum";
+import "vue3-carousel/dist/carousel.css";
 
 const props = defineProps<{
   courseId: number
@@ -151,6 +154,7 @@ const breakpointsLessonCarousel = {
 const { $module } = useNuxtApp();
 
 const currentModuleIdx = ref<number>(0);
+const currentModuleIdxComputed = computed(() => currentModuleIdx.value);
 const carousel = ref<{ prev: () => void, next: () => void }[]>();
 
 const { data: modules, pending } = useLazyAsyncData(`module-course-${props.courseId}`, async () => await $module.course.getModulesByCourseId(props.courseId), { server: false });

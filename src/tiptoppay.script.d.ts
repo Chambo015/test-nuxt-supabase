@@ -1,4 +1,3 @@
-
 declare namespace tiptop {
   interface WidgetOptions {
     language: string
@@ -12,7 +11,7 @@ declare namespace tiptop {
     accountId?: string // Идентификатор плательщика (необязательно)
     invoiceId?: string // Номер заказа (необязательно)
     email?: string // email плательщика (необязательно)
-    skin?: "classic" | "modern" | string // Дизайн виджета (необязательно)
+    skin?: "classic" | "modern" | "mini" // Дизайн виджета (необязательно)
     autoClose?: number // Автоматическое закрытие виджета через указанное количество секунд (необязательно)
   }
 

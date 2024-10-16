@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div v-if="isLoading" class="mb-4 flex w-full gap-2">
-      <Skeleton class="mb-2" height="1rem" width="2rem" />
-      <Skeleton class="mb-2" height="1rem" width="2rem" />
-      <Skeleton class="mb-2" height="1rem" width="2rem" />
+    <div v-if="isLoading" class="mb-4 flex w-full gap-2 py-2">
+      <Skeleton class="mb-2" height="28px" width="3rem" />
+      <Skeleton class="mb-2" height="28px" width="5rem" />
+      <Skeleton class="mb-2" height="28px" width="3rem" />
     </div>
     <div v-else class="group mb-4 grid grid-rows-[0fr] py-2 transition-all delay-[250ms] duration-500 hover:grid-rows-[1fr] max-md:grid-rows-1">
       <ul class="relative flex flex-wrap items-center overflow-hidden from-main-bg pb-[28px] transition-all delay-200 duration-500 *:text-nowrap after:absolute after:inset-y-0 after:right-0 after:w-16 after:bg-gradient-to-l hover:after:hidden group-hover:pb-0 group-hover:delay-300 max-md:flex-wrap  max-md:gap-1 max-md:px-4 max-md:pb-0 max-md:after:hidden">

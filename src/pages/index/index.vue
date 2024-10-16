@@ -10,14 +10,14 @@
                 <MainHeader
                   bg-color="primary"
                   class="text-nowrap !leading-[0.85] max-xl:!text-[70px] max-md:!text-4xl max-md:font-bold max-sm:text-wrap"
-                  :class="[$i18n.locale === 'kz' && 'max-w-fit text-[80px]', $i18n.locale === 'ru' && '!text-[100px] max-sm:!text-3xl min-[350px]:!text-nowrap', $i18n.locale === 'en' && '!text-[90px] max-[430px]:max-w-[270px]']"
+                  :class="[$i18n.locale === AppLangs.KZ && 'max-w-fit text-[80px]', $i18n.locale === AppLangs.RU && '!text-[100px] max-sm:!text-3xl min-[350px]:!text-nowrap', $i18n.locale === AppLangs.EN && '!text-[90px] max-[430px]:max-w-[270px]']"
                 >
                   {{ $t("pages.main.head.title_1") }}
                 </MainHeader>
                 <MainHeader
                   bg-color="secondary"
                   class="!leading-[0.9] max-xl:!text-[70px] max-md:!text-4xl max-md:font-bold"
-                  :class="[$i18n.locale === 'kz' && 'max-w-[740px] text-[80px] max-[660px]:max-w-[500px]', $i18n.locale === 'ru' && '!text-[100px] max-[675px]:!w-min max-sm:!text-3xl md:!w-min', $i18n.locale === 'en' && '!text-[90px] max-[905px]:max-w-[570px] max-[500px]:max-w-[320px] xl:text-nowrap']"
+                  :class="[$i18n.locale === AppLangs.KZ && 'max-w-[740px] text-[80px] max-[660px]:max-w-[500px]', $i18n.locale === AppLangs.RU && '!text-[100px] max-[675px]:!w-min max-sm:!text-3xl md:!w-min', $i18n.locale === AppLangs.EN && '!text-[90px] max-[905px]:max-w-[570px] max-[500px]:max-w-[320px] xl:text-nowrap']"
                 >
                   {{ $t("pages.main.head.title_2") }}
                 </MainHeader>
@@ -42,7 +42,7 @@
           <p class="mt-5 font-inter text-sm font-light text-gray-600 sm:text-2xl">
             {{ $t("pages.main.manage.note") }}
           </p>
-          <NuxtLink to="/methodology">
+          <LocalizatedLink to="/methodology">
             <Button
               icon="pi pi-arrow-right"
               icon-pos="right"
@@ -50,8 +50,8 @@
               :pt="{ root: 'px-6 py-4 rounded-[55px] mt-5', label: 'font-inter font-normal mr-4' }"
               severity="contrast"
             />
-          </NuxtLink>
-          <img class="pointer-events-none mt-16 w-full select-none pl-3 pr-2 sm:p-0" :src="`/images/main/mockup_${$i18n.locale}.png`" />
+          </LocalizatedLink>
+          <img class="pointer-events-none mt-16 w-full select-none pl-3 pr-2 sm:p-0" loading="lazy" :src="`/images/main/mockup_${$i18n.locale}.png`" />
         </div>
       </div>
     </div>
@@ -64,16 +64,16 @@
           <p class="mt-5 text-sm font-light text-white sm:text-2xl">
             {{ $t("pages.main.citizens.note") }}
           </p>
-          <NuxtLink
+          <LocalizatedLink
             class="relative mt-5 flex h-12 w-min items-center justify-center rounded-full border-0 bg-lime-200 px-6 font-bold text-gray-950"
             to="/awareness"
           >
             {{ $t("actions.moreButton") }}
             <i class="pi pi-arrow-right ml-4"></i>
-          </NuxtLink>
+          </LocalizatedLink>
         </div>
         <div class="bg-lime-200 md:w-2/5 md:pt-16">
-          <img class="pointer-events-none select-none" :src="`/images/main/content_${$i18n.locale}.png`" />
+          <img class="pointer-events-none select-none" loading="lazy" :src="`/images/main/content_${$i18n.locale}.png`" />
         </div>
       </div>
     </div>
@@ -86,7 +86,9 @@ import InfiniteCarousel from "~/shared/components/InfiniteCarousel.vue";
 import MainHeader from "~/shared/components/headers/MainHeader.vue";
 import { MainSeo } from "~/shared/seo/index";
 import { FeedsSlider } from "~/features/feeds/feeds-slider";
-// import SectionCourses from './_blocks/SectionCourses.vue'
+import { AppLangs } from "~/shared/enums";
+import { LocalizatedLink } from "~/shared/ui";
+
 useSeoMeta(MainSeo);
 </script>
 

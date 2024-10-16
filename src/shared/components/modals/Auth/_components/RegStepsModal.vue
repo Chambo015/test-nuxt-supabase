@@ -66,6 +66,7 @@
                   prompt-label="Введите пароль"
                   :strong-regex="RegExpPassword"
                   v-bind="strengthLevelPassword"
+                  toggle-mask
                 />
                 <small v-if="steps[1].password.$error && submitted" id="password-help">{{
                   steps[1].password.$error.message
@@ -83,6 +84,7 @@
                   :feedback="false"
                   name="rrrccc"
                   :placeholder="$t('actions.confPassword')"
+                  toggle-mask
                 />
                 <small v-if="steps[1].re_password.$error && submitted" id="re_password-help">{{
                   steps[1].re_password.$error.message

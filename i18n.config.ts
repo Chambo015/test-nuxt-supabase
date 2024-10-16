@@ -7,9 +7,8 @@ export default defineI18nConfig(() => {
 
   return {
     legacy: false,
-    locale: "ru",
+    // fallbackLocale: "ru", // если не найден перевод будет использоваться русский
     globalInjection: true,
     messages: locales,
-    // locales: ["kk", "ru"],
   };
 });

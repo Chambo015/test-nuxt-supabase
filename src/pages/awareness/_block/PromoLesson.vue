@@ -26,10 +26,10 @@
 </template>
 
 <script setup lang="ts">
-import { AuthModalType } from "~/shared/enums/common.enum";
+import { AppLangs, AuthModalType } from "~/shared/enums/common.enum";
 
 const authStore = useAuthStore();
-const { locale } = useI18n();
+const { locale } = useI18n<unknown, AppLangs>();
 
 async function open() {
   if (!authStore.isLoggedIn) {
@@ -40,9 +40,9 @@ async function open() {
 
 const videoSrc = computed(() => {
   switch (locale.value) {
-    case "ru":
+    case AppLangs.RU:
       return "https://kinescope.io/embed/grVKF4yynF72Cem3mCxZS1";
-    case "kz":
+    case AppLangs.KZ:
       return "https://kinescope.io/eT99P4kDWQGA5QbKc4FgMa";
     default:
       return "https://kinescope.io/embed/grVKF4yynF72Cem3mCxZS1";

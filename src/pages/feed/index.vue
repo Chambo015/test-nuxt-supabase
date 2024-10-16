@@ -8,22 +8,22 @@
           <h2 class="font-NeueMachina text-2xl font-extrabold tracking-wider text-gray-700">
             {{ $t("pages.feed.title") }}
           </h2>
-          <TypeSelect :is-loading="isPendingFilters" :types="filters?.types" @change="typeHandler" />
+          <TypeSelect :default-type-id="params.type_id" :is-loading="statusFilters !== 'success'" :types="filters?.types" @change="typeHandler" />
         </div>
 
         <TagsSection
-          :is-loading="isPendingFilters"
+          :is-loading="statusFilters !== 'success'"
           :tags="filters?.tags"
           @handle-tag="tagHandler"
         />
 
-        <template v-if="isPendingFeeds && contents.length <= 0">
+        <template v-if="contents.length <= 0">
           <FeedCardSkeleton />
           <FeedCardSkeleton class="mt-6" />
           <FeedCardSkeleton class="mt-6" />
         </template>
         <template v-else>
-          <div v-if="contents.length > 0" class="mb-5 max-md:px-4">
+          <div class="mb-5 max-md:px-4">
             <template v-for="content in contents" :key="content.id">
               <FeedCard :content="content" />
             </template>
@@ -34,7 +34,7 @@
           aria-label="Submit"
           class="h-10 w-full rounded-md border-0 bg-gray-100 transition hover:bg-gray-200"
           icon="pi pi-ellipsis-h text-violet-600"
-          :loading="isPendingFeeds && statusFeeds !== 'idle'"
+          :loading="statusFeeds === 'pending'"
           severity="secondary"
           @click="moreLoad"
         />
@@ -61,22 +61,20 @@ useSeoMeta(FeedSeo);
 const { $module } = useNuxtApp();
 const route = useRoute();
 const contentStore = useContentStore();
+const authStore = useAuthStore();
 const { contents, pagination } = storeToRefs(contentStore);
 
 const params = useUrlSearchParams();
 
-const { data: feeds, pending: isPendingFeeds, execute, status: statusFeeds } = await $module.content.getFeeds({
-  asyncDataOptions: {
-    watch: [() => route.query],
-    immediate: false,
-    server: false,
-    lazy: true,
-  },
-  fetchOptions: {
+const { data: feeds, execute, status: statusFeeds } = useLazyAsyncData(
+  `feeds-${pagination.value.page}`,
+  async () => await $module.content.getFeeds({ fetchOptions: {
     query: params,
     params: reactive({ page: toRef(() => pagination.value.page) }),
   },
-});
+  }),
+  { watch: [() => route.query], immediate: false, server: false },
+);
 
 function moreLoad() {
   if (!pagination.value.hasMore) return;
@@ -90,16 +88,21 @@ watch(feeds, (newData) => {
   newData?.data && contentStore.setContent(newData?.data);
 });
 
+/**
+ * При смене языка очищаем ленту и все по новой
+ */
+watch(() => authStore.localLang.code, async () => {
+  contentStore.resetContents();
+  await nextTick();
+  execute();
+}, { immediate: false });
+
 onMounted(() => {
   if (contents.value.length <= 0) execute();
 });
 
-const { data: filters, pending: isPendingFilters } = await $module.content.getFeedFilters({
-  asyncDataOptions: {
-    server: false,
-    lazy: true,
-  },
-});
+const { data: filters, status: statusFilters } = useLazyAsyncData("feeds-filters", async () => await $module.content.getFeedFilters({
+}), { server: false });
 
 function tagHandler({ id }: { id: number | "All" }) {
   contentStore.resetContents();

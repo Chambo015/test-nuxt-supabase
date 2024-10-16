@@ -8,56 +8,36 @@
           <BaseIcon color="white" name="logo-title" />
           <ul class="space-y-6 font-inter text-white max-xl:space-y-4">
             <li>
-              <NuxtLink class="hover-link-effect" to="/">
+              <LocalizatedLink class="hover-link-effect" to="/">
                 {{ $t('actions.sideBar.home') }}
-              </NuxtLink>
+              </LocalizatedLink>
             </li>
             <li>
-              <NuxtLink class="hover-link-effect" to="/about">
+              <LocalizatedLink class="hover-link-effect" to="/about">
                 {{ $t('actions.sideBar.aboutCompany') }}
-              </NuxtLink>
+              </LocalizatedLink>
             </li>
             <li>
-              <NuxtLink class="hover-link-effect" to="/methodology">
+              <LocalizatedLink class="hover-link-effect" to="/methodology">
                 {{ $t('actions.sideBar.methodology') }}
-              </NuxtLink>
+              </LocalizatedLink>
             </li>
             <li>
-              <NuxtLink class="hover-link-effect" to="/feed">
+              <LocalizatedLink class="hover-link-effect" to="/feed">
                 {{ $t('actions.sideBar.news') }}
-              </NuxtLink>
+              </LocalizatedLink>
             </li>
             <!-- <li>
-              <NuxtLink class="hover-link-effect">
+              <LocalizatedLink class="hover-link-effect">
                 {{ $t('actions.sideBar.contacts') }}
-              </NuxtLink>
+              </LocalizatedLink>
             </li> -->
           </ul>
           <ul class="space-y-1 font-inter text-[10px] leading-tight text-white">
-            <li>
-              <NuxtLink class="hover:opacity-70" to="/payments">
-                Платежи. Оплата банковской картой онлайн
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink class="hover:opacity-70" to="/offer">
-                Договор оферты
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink class="hover:opacity-70" to="/policy">
-                Политика Конфиденциальности
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink class="hover:opacity-70" to="/service">
-                Условия предоставления услуг
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink class="hover:opacity-70" to="/faq">
-                Q&A
-              </NuxtLink>
+            <li v-for="item in helpfulLinks" :key="item.link">
+              <LocalizatedLink class="hover:opacity-70" :to="item.link">
+                {{ item.label }}
+              </LocalizatedLink>
             </li>
           </ul>
           <div>
@@ -95,8 +75,33 @@ import CircleImageFooter from "./_ui/CircleImageFooter.vue";
 import IncidentForm from "~/shared/components/forms/IncidentForm.vue";
 import BaseIcon from "~/shared/components/BaseIcon.vue";
 import IncidentModal from "~/shared/components/modals/IncidentModal.vue";
+import { LocalizatedLink } from "~/shared/ui";
 
 const visibleIncidentModal = ref(false);
+
+const helpfulLinks = [
+  {
+    label: "Платежи. Оплата банковской картой онлайн",
+    link: "/payments",
+  },
+  {
+    label: "Договор оферты",
+    link: "/offer",
+  },
+  {
+    label: "Политика Конфиденциальности",
+    link: "/policy",
+  },
+  {
+    label: "Условия предоставления услуг",
+    link: "/service",
+  },
+  {
+    label: "Q&A",
+    link: "/faq",
+  },
+
+];
 </script>
 
 <style scoped>

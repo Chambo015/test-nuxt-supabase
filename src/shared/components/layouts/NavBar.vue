@@ -2,9 +2,9 @@
   <div class="navbar relative z-[9] flex h-navbarHeight items-center bg-white">
     <div class="w-full ">
       <div class="mx-auto flex w-full max-w-screen-2xl items-center justify-between bg-white px-4">
-        <NuxtLink to="/">
+        <LocalizatedLink to="/">
           <BaseIcon name="logo-title-main" width="114" />
-        </NuxtLink>
+        </LocalizatedLink>
 
         <template v-if="$device.isMobile">
           <div class="flex items-center gap-2">
@@ -21,16 +21,6 @@
         </template>
 
         <div v-else class="flex items-center gap-2 max-md:hidden">
-          <!--          <IconField iconPosition="left" class="search mr-2"> -->
-          <!--            <InputIcon> -->
-          <!--              <i class="pi pi-search text-violet-600" /> -->
-          <!--            </InputIcon> -->
-          <!--            <InputText -->
-          <!--              class="search rounded-full h-10 border-0 text-base text-violet-600" -->
-          <!--              v-model="search" -->
-          <!--              placeholder="Поиск" -->
-          <!--            /> -->
-          <!--          </IconField> -->
           <Button
             :label="$t('actions.noticeIncident')"
             rounded
@@ -60,7 +50,7 @@
               :popup="true"
             >
               <template #item="{ item, props }">
-                <NuxtLink
+                <LocalizatedLink
                   v-ripple
                   class="flex items-center"
                   :to="item.href"
@@ -69,7 +59,7 @@
                 >
                   <span :class="item.icon"></span>
                   <span class="ml-2">{{ $t(item.localeKey) }}</span>
-                </NuxtLink>
+                </LocalizatedLink>
               </template>
             </Menu>
           </template>
@@ -139,6 +129,7 @@ import BaseIcon from "../BaseIcon.vue";
 import { useAuthStore } from "~/shared/store/auth.store";
 import { AppRoutes, AuthModalType } from "~/shared/enums";
 import { LangSwitcher } from "~/features/langSwitcher";
+import { LocalizatedLink } from "~/shared/ui";
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -200,23 +191,6 @@ async function logout() {
 
   .logo {
     height: 17px;
-  }
-
-  .search {
-    i {
-      color: var(--purple-600);
-    }
-
-    input {
-      background: var(--purple-50);
-      border-radius: 50px;
-      color: var(--purple-600);
-      width: 360px;
-
-      ::placeholder {
-        color: var(--purple-600);
-      }
-    }
   }
 }
 </style>

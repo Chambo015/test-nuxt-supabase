@@ -28,9 +28,8 @@
         </div>
       </VueSlide>
     </VueCarousel>
-    <Teleport to="body">
+    <Teleport v-if="visible && currentShort" to="body">
       <HistoryModal
-        v-if="!!currentShort"
         v-model:visible="visible"
         :short="currentShort"
         @close="visible = false"

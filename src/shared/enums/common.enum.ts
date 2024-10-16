@@ -24,3 +24,9 @@ export enum AuthModalType {
   CONFIRM = "confirm",
   COMPLETE_REG = "completeReg",
 }
+
+export enum AppLangs {
+  RU = "ru",
+  KZ = "kz",
+  EN = "en",
+}

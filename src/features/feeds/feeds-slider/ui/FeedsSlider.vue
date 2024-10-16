@@ -11,14 +11,14 @@
               {{ $t("pages.main.news.note") }}
             </p>
           </div>
-          <NuxtLink
+          <LocalizatedLink
             class="relative ml-auto text-nowrap border-0 font-bold text-white max-md:w-full"
             to="/feed"
           >
             <Button :pt="{ root: { class: '!px-10 !rounded-full py-4 max-md:w-full' } }" severity="contrast">
               {{ $t("pages.main.news.all") }}
             </Button>
-          </NuxtLink>
+          </LocalizatedLink>
         </div>
       </div>
       <div v-if="!pending" class="body pt-6">
@@ -46,14 +46,18 @@
 <script setup lang="ts">
 import FeedCardSkeleton from "~/shared/components/cards/FeedCardSkeleton.vue";
 import NewsCard from "~/shared/components/cards/NewsCard.vue";
+import { LocalizatedLink } from "~/shared/ui";
 
 const { $module } = useNuxtApp();
 
-const { data: feeds, pending } = await $module.content.getFeeds({ asyncDataOptions: { server: false, lazy: true, default() {
-  return {
-    data: [],
-  };
-} } });
+const { data: feeds, pending } = useLazyAsyncData(async () => await $module.content.getFeeds(), {
+  server: false,
+  default() {
+    return {
+      data: [],
+    };
+  },
+});
 
 const settingsNews = {
   itemsToShow: 1.1,

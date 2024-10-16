@@ -62,8 +62,8 @@ definePageMeta({
 const { $module } = useNuxtApp();
 const { id: courseId } = useRoute().params;
 
-const { data: course } = useLazyAsyncData(`course-${courseId}`, async () => await $module.course.getCourseById(+courseId as number), {
-  server: false,
+const { data: course } = await useLazyAsyncData(`course-${courseId}`, async () => await $module.course.getCourseById(+courseId as number), {
+  server: true,
   transform(res) {
     return {
       ...res,

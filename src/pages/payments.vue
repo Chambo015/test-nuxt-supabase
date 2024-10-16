@@ -1,5 +1,5 @@
 <template>
-  <div class="container pl-sidebarWidth pt-[30px] max-md:px-4">
+  <div class="max-w-screen-2xl pl-sidebarWidth pr-4 pt-[30px] max-md:px-4">
     <div class="rounded-xl bg-white px-11 py-[30px] text-[#3B3551] max-md:p-4">
       <h1 class="mb-6 text-lg font-bold">
         Платежи. Оплата банковской картой онлайн

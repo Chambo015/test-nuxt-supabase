@@ -1,5 +1,5 @@
 <template>
-  <div class="modal z-10 flex items-center justify-center backdrop-blur-sm">
+  <div class="modal z-20 flex items-center justify-center backdrop-blur-sm">
     <div class="content relative flex overflow-hidden rounded-2xl bg-white">
       <div
         class="close flex cursor-pointer items-center justify-center rounded-full"
@@ -53,7 +53,7 @@ defineEmits(["close"]);
   height: 100%;
   opacity: 0;
   transition: all 0.2s;
-  z-index: -1;
+  z-index: 11;
 
   &:before {
     content: '';
@@ -67,7 +67,7 @@ defineEmits(["close"]);
 
   &[visible="true"] {
     opacity: 1;
-    z-index: 9;
+    z-index: 11;
   }
 
   img {

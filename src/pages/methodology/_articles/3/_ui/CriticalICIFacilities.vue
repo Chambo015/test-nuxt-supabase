@@ -16,7 +16,7 @@
             </p>
           </div>
           <div class="border-2 border-main-purple py-4 px-6 flex flex-col items-center">
-            <span class="text-[40px] font-black text-main-purple leading-none">514</span>
+            <span class="text-[40px] font-black text-main-purple leading-none">570</span>
             <p class="font-semibold text-xl text-center">
               Критически важных объектов
             </p>
@@ -82,35 +82,35 @@ import SvgMapKazakhstan from "./SvgMapKazakhstan.vue";
 const stats = [
   {
     title: "Гос. услуги",
-    count: 230,
+    count: 126,
   },
   {
     title: "Транспорт",
-    count: 64,
+    count: 50,
   },
   {
     title: "Энергетика",
-    count: 33,
-  },
-  {
-    title: "Нефтегаз",
     count: 16,
   },
   {
+    title: "Нефтегаз",
+    count: 11,
+  },
+  {
     title: "Связь и информация",
-    count: 98,
+    count: 247,
   },
   {
     title: "Финансы",
-    count: 43,
+    count: 70,
   },
   {
     title: "Здравоохранение",
-    count: 18,
+    count: 32,
   },
   {
     title: "Промышленность",
-    count: 12,
+    count: 18,
   },
 ];
 </script>

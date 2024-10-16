@@ -49,11 +49,6 @@ import { PayStartCourseButton } from "~/features/startCourse";
 import BaseIcon from "~/shared/components/BaseIcon.vue";
 import { AllCoursesSeo } from "~/shared/seo";
 
-// config page
-definePageMeta({
-  development: true, // TODO: remove when production
-});
-
 useSeoMeta(AllCoursesSeo);
 
 // Breadcrumb

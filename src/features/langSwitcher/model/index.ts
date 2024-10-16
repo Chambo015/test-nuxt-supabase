@@ -1,10 +1,12 @@
+import { AppLangs } from "~/shared/enums";
+
 export interface TypeLang {
   name: string
-  code: string
+  code: AppLangs
 }
 
 export const langs: TypeLang[] = [
-  { name: "РУ", code: "ru" },
-  { name: "KK", code: "kz" },
-  { name: "EN", code: "en" },
+  { name: "РУ", code: AppLangs.RU },
+  { name: "KK", code: AppLangs.KZ },
+  { name: "EN", code: AppLangs.EN },
 ] satisfies TypeLang[];

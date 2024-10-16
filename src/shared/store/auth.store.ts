@@ -1,4 +1,4 @@
-import type { AuthModalType } from "~/shared/enums/common.enum";
+import { AppLangs, type AuthModalType } from "~/shared/enums/common.enum";
 import type { User } from "~/shared/models/user.model";
 import { AuthRepository } from "~/shared/repository/auth.repository";
 import type { Nullable } from "~/types";
@@ -9,8 +9,10 @@ interface AuthStateType {
   modal?: AuthModalType | null
   user?: User
   isPendingProfile: boolean
-  localLang: { name: string, code: string }
+  localLang: { name: string, code: AppLangs }
 };
+
+// TODO: Сделать отдельный Слайс Session с использованием Модели
 
 export const useAuthStore = defineStore("auth", {
   state: (): AuthStateType => ({
@@ -18,7 +20,7 @@ export const useAuthStore = defineStore("auth", {
     modal: null,
     user: undefined,
     isPendingProfile: true,
-    localLang: { name: "РУ", code: "ru" },
+    localLang: { name: "РУ", code: AppLangs.RU },
   }),
   getters: {
     isLoggedIn: state => !!state.token && state.user?.is_verified,
@@ -65,6 +67,6 @@ export const useAuthStore = defineStore("auth", {
   persist: {
     storage: persistedState.cookies,
     key: "auth2", // Cookie key
-    paths: ["token", "localLang", "user.is_verified"], // Only this fields save in Cookies
+    paths: ["token", "localLang", "user.is_verified", "user.is_ib"], // Only this fields save in Cookies
   },
 });

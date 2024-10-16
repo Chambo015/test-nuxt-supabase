@@ -22,22 +22,23 @@ const props = defineProps<{
 
 const { $module } = useNuxtApp();
 
-const { data: feeds } = await $module.content.getFeeds({
-  asyncDataOptions: {
-    watch: [toRef(props.tags)],
-    default() {
-      return { data: [] };
-    },
-    transform(input) {
-      return {
-        data: input.data.slice(0, 10).filter(n => n.id !== props.excludeFeedId),
-      };
-    },
-  },
+// TODO: Реализовать запрос всех новостей для каждого отдельного Тега в массиве tags используя Promise.All
+
+const { data: feeds } = useLazyAsyncData(`feeds-tag-${props.tags[0].id}`, async () => await $module.content.getFeeds({
   fetchOptions: {
     query: {
       tag_id: props.tags[0].id,
     },
+  },
+}), {
+  watch: [toRef(props.tags)],
+  default() {
+    return { data: [] };
+  },
+  transform(input) {
+    return {
+      data: input.data.slice(0, 10).filter(n => n.id !== props.excludeFeedId),
+    };
   },
 });
 </script>

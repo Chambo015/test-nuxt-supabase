@@ -11,14 +11,11 @@ interface startCourseProps {
   queryCourseLink?: LocationQueryRaw
 }
 
-function Link(to: RouteLocationRaw) {
-  return () => navigateTo(to);
-}
-
 export function useStartCourse(course: MaybeRefOrGetter<Course | null>, options?: optProps) {
   const { callPayCourse } = options || {};
 
   const { $module, $i18n } = useNuxtApp();
+  const localeRoute = useLocaleRoute();
   const tost = useToast();
   const authStore = useAuthStore();
 
@@ -31,7 +28,7 @@ export function useStartCourse(course: MaybeRefOrGetter<Course | null>, options?
     if (!courseId.value) return;
 
     const { queryCourseLink } = props || {};
-    const navigateToCourse = Link({ path: `/course/${courseId.value}`, query: queryCourseLink });
+    const navigateToCourse = () => navigateTo(localeRoute({ path: `/course/${courseId.value}`, query: queryCourseLink })?.fullPath);
 
     /** Если курс бесплатный и он есть в Моих Курсах, переходим к курсу */
     if (isFree && authStore.courseIds.includes(courseId.value)) return navigateToCourse();

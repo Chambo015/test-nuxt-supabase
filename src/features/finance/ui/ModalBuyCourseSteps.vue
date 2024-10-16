@@ -139,8 +139,12 @@
               </template>
               <template #content>
                 <div class="min-w-[500px] space-y-4 rounded-3xl bg-[#F9FAFB] p-4 font-inter">
-                  <div class="flex items-center justify-center">
-                    <img height="208" src="/images/payments/card.jpg" width="398" />
+                  <div class="flex flex-col items-center justify-center py-7">
+                    <!-- <img height="208" src="/images/payments/card.jpg" width="398" /> -->
+                    <p class="text-sm font-semibold">
+                      ИТОГОВАЯ СУММА К ОПЛАТЕ:
+                    </p>
+                    <p><span class="text-xl font-semibold text-primary-hover">{{ totalPrice }} тг</span></p>
                   </div>
                 </div>
                 <div class="flex justify-end gap-4 pt-4">

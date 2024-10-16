@@ -452,10 +452,10 @@
   transform: rotate(25deg);
 }
 /* path {
-  stroke-dasharray: 1800;
+  stroke-dasharray: 1800 1800;
   stroke-dashoffset: 1800;
   animation: dash 2s linear forwards;
-}
+} */
 @keyframes dash {
   0% {
     stroke-dashoffset: 1800;
@@ -464,5 +464,5 @@
   100% {
     stroke-dashoffset: 0;
   }
-} */
+}
 </style>

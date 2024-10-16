@@ -3,15 +3,15 @@ import type { AdvancedJournal } from "./journal.type";
 export interface User {
   id: string
   name: string
-  last_name: string | null
+  last_name: string | null // Обязательная для полной регистрации юзера
   login: string | null
   email: string
   photo: string | null
-  job_direction_id: string | null
-  job_position_id: string | null
-  hobby_direction_id: string | null
-  is_verified: boolean
-  is_registration_complete: boolean
+  job_direction_id: string | null // Обязательная для полной регистрации юзера
+  job_position_id: string | null // Обязательная для полной регистрации юзера
+  hobby_direction_id: string | null // Обязательная для полной регистрации юзера
+  is_verified: boolean // Прошел ли основную регистрацию
+  is_registration_complete: boolean // Введена ли дополнительная информация, после которой изменить невозможно
   journals?: AdvancedJournal[]
   created_at: string
   updated_at: string

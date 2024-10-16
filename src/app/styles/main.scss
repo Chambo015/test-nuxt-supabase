@@ -29,8 +29,10 @@
     overflow: unset;
   }
 }
+// When dragging element we off events like click
+// for to prevent click when drag event 
 .carousel.is-dragging {
-  pointer-events: none; // for to prevent click when drag event 
+  pointer-events: none;
 }
 
 jdiv[class^='wrap'] {

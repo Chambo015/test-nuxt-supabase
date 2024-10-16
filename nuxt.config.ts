@@ -1,61 +1,58 @@
 /* eslint-disable node/prefer-global/process */
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-
 export default defineNuxtConfig({
   devtools: { enabled: false },
 
   app: {
     head: {
+      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
+      meta: [{ name: "robots", content: process.env.NUXT_SITE_ENV === "production" ? "index, follow" : "noindex, nofollow" }],
       script: [
         ...(process.env.NODE_ENV === "production" && process.env.NUXT_SITE_ENV === "production"
-          ? [{
-              type: "text/javascript",
-              innerHTML: `
-          (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-            ym(97577652, "init", {
-                clickmap:true,
-                trackLinks:true,
-                accurateTrackBounce:true,
-                webvisor:true
-          });`,
-            },
-            // Google Tag Manager
-            {
-              innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          ? [
+            // Yandex Metrika
+              {
+                type: "text/javascript",
+                innerHTML: `
+                (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                  m[i].l=1*new Date();
+                  for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+                  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+                  (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+                  ym(97577652, "init", {
+                      clickmap:true,
+                      trackLinks:true,
+                      accurateTrackBounce:true,
+                      webvisor:true
+                });`,
+              },
+              // Google Tag Manager
+              {
+                innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
                 })(window,document,'script','dataLayer','GTM-W5XB8DZG')`,
-            }]
+              },
+            ]
           : []),
-        // { // Jivo
-        //   src: "//code.jivo.ru/widget/fHXDX0m0Yy",
-        //   async: true,
-        // },
-        // Tip Top Pay
-        // {
-        //   src: "https://widget.tiptoppay.kz/bundles/widget.js",
-        // },
       ],
       noscript: [
         ...(process.env.NODE_ENV === "production" && process.env.NUXT_SITE_ENV === "production"
-          ? [{
-              innerHTML: "<div><img src='https://mc.yandex.ru/watch/97577652' style='position:absolute; left:-9999px;' /></div>",
-            },
-            // Google Tag Manager
-            {
-              innerHTML: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5XB8DZG"
+          ? [
+              // Yandex Metrika
+              {
+                innerHTML: "<div><img src='https://mc.yandex.ru/watch/97577652' style='position:absolute; left:-9999px;' /></div>",
+              },
+              // Google Tag Manager
+              {
+                innerHTML: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5XB8DZG"
                       height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
-            }]
+              },
+            ]
           : []),
       ],
-      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
-      meta: [...(process.env.NUXT_SITE_ENV === "production" ? [{ name: "robots", content: "index, follow" }] : [{ name: "robots", content: "noindex, nofollow" }])],
       htmlAttrs: {
         prefix: "og: http://ogp.me/ns#",
       },
@@ -73,17 +70,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
     "@nuxtjs/device",
-    [
-      "@nuxtjs/google-fonts",
-      {
-        families: {
-          Inter: {
-            wght: [400, 700, 600, 800, 300, 900, 500],
-            ital: [400, 700, 300, 500],
-          },
-        },
-      },
-    ],
+    "@nuxtjs/google-fonts",
     "@nuxt/image",
     "nuxt-svgo",
     // "nuxt-capo",
@@ -123,6 +110,16 @@ export default defineNuxtConfig({
     watcher: "chokidar",
   },
 
+  googleFonts: {
+    families: {
+      Inter: {
+        wght: [400, 700, 600, 800, 300, 900, 500],
+        ital: [400, 700, 300, 500],
+      },
+    },
+    preload: true,
+  },
+
   eslint: {
     config: {
       standalone: false,
@@ -136,6 +133,11 @@ export default defineNuxtConfig({
       escapeHtml: false,
       jit: true,
     },
+    locales: [
+      { code: "ru", language: "ru-RU" },
+      { code: "kz", language: "kk-KZ" },
+      { code: "en", language: "en-US" },
+    ],
     defaultLocale: "ru",
   },
 
@@ -155,7 +157,7 @@ export default defineNuxtConfig({
   },
 
   tailwindcss: {
-    cssPath: "@/app/styles/main.scss",
+    cssPath: false,
     viewer: false,
     configPath: "./tailwind.config.js",
   },

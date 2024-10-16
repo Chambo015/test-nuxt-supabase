@@ -1,9 +1,10 @@
+import { AppLangs } from "~/shared/enums";
 import type { Invoice } from "~/types/finance.type";
 
-const languageMap: Record<string, string> = {
-  kz: "kk-KZ",
-  en: "en-US",
-  ru: "kk",
+const languageMap: Record<AppLangs, string> = {
+  [AppLangs.KZ]: "kk-KZ",
+  [AppLangs.EN]: "en-US",
+  [AppLangs.RU]: "ru-RU",
 };
 
 interface PayProps extends Pick<tiptop.PayOptions, "description" | "accountId" | "amount" | "invoiceId" | "publicId"> {
@@ -12,8 +13,8 @@ interface PayProps extends Pick<tiptop.PayOptions, "description" | "accountId" |
 
 export function useTipTopPay() {
   const { $module, $toast } = useNuxtApp();
-  const { locale } = useI18n({ useScope: "global" });
-
+  const { locale } = useI18n<unknown, AppLangs>({ useScope: "global" });
+;
   const isLoading = ref(false);
 
   useHead({

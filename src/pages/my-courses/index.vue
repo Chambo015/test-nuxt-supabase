@@ -15,7 +15,7 @@
           </h1>
           <div class="pt-9">
             <div v-if="data.length > 0" class="grid grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-x-6 gap-y-[18px]">
-              <NuxtLink
+              <LocalizatedLink
                 v-for="item in data"
                 :key="item.id"
                 :to="`/course/${item.id}`"
@@ -27,7 +27,7 @@
                   :status="item.status"
                   :title-course="item.name"
                 />
-              </NuxtLink>
+              </LocalizatedLink>
             </div>
             <div v-else class="flex min-h-[50dvh] items-center justify-center lg:mr-sidebarWidth">
               <Empty action-title="Найти курсы" description="Начните изучать наши курсы и отслеживайте прогресс курсов" title="У вас нет курсов" @action="$router.push('/courses')" />
@@ -42,11 +42,10 @@
 <script setup lang="ts">
 import { MyCourseCard, useMyCourses } from "~/features/courses/myCourses";
 import BaseIcon from "~/shared/components/BaseIcon.vue";
-import { Empty } from "~/shared/ui";
+import { Empty, LocalizatedLink } from "~/shared/ui";
 
 definePageMeta({
   auth: true,
-  development: true, // TODO: remove if prod
 });
 
 const { data } = useMyCourses();

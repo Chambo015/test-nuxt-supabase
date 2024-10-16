@@ -22,7 +22,7 @@
           <nav class="bg-gradient-to-r from-main-bg">
             <ul class="menu">
               <li v-for="menu in sidebarItemsList" :key="menu.name">
-                <NuxtLink
+                <LocalizatedLink
                   v-tooltip.right="{
                     value: $t(menu.name),
                     disabled: !isCollapse,
@@ -43,7 +43,7 @@
                   >
                     {{ $t(menu.name) }}
                   </template>
-                </NuxtLink>
+                </LocalizatedLink>
               </li>
             </ul>
             <!-- <section v-if="!isCollapse" class="pl-[30px] pt-5 text-[#6f7f95]">
@@ -59,9 +59,9 @@
               </button>
               <ul v-if="linksOpen" class="flex flex-col space-y-1 text-base">
                 <li class="h-auto font-medium ">
-                  <NuxtLink class="block py-4 hover:text-primary" to="/about">
+                  <LocalizatedLink class="block py-4 hover:text-primary" to="/about">
                     {{ $t("actions.sideBar.about") }}
-                  </NuxtLink>
+                  </LocalizatedLink>
                 </li>
               </ul>
             </section> -->
@@ -76,6 +76,7 @@
 import { type NavigationItemType, useNavigationItems } from "../model";
 import { AppRoutes } from "~/shared/enums";
 import BaseIcon from "~/shared/components/BaseIcon.vue";
+import { LocalizatedLink } from "~/shared/ui";
 
 const route = useRoute();
 const isCollapse = ref(true);
@@ -87,9 +88,10 @@ const { sidebarItemsList, isCabinetInfoSecurity } = useNavigationItems();
 
 function handleClickLink(item: NavigationItemType) {
   menuActive.value = item.path;
-
   // if we go to '/feed', need to reset contents for upload new data
-  if (item.path === AppRoutes.Feed && route.path !== AppRoutes.Feed) contentStore.resetContents();
+  if (item.path === AppRoutes.Feed && route.path !== AppRoutes.Feed) {
+    contentStore.resetContents();
+  }
 }
 </script>
 
