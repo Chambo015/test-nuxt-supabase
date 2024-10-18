@@ -26,8 +26,10 @@
 </template>
 
 <script setup lang="ts">
+import { useLocalizatedRouter } from "~/shared/composables/useLocalizatedRouter";
 import { AppLangs, AuthModalType } from "~/shared/enums/common.enum";
 
+const { localeNavigateTo } = useLocalizatedRouter();
 const authStore = useAuthStore();
 const { locale } = useI18n<unknown, AppLangs>();
 
@@ -35,7 +37,7 @@ async function open() {
   if (!authStore.isLoggedIn) {
     return (authStore.modal = AuthModalType.LOGIN);
   }
-  await navigateTo({ path: "/course/1" });
+  await localeNavigateTo({ path: "/course/1" });
 };
 
 const videoSrc = computed(() => {

@@ -11,6 +11,7 @@ function lockScroll() {
   window.addEventListener("touchmove", preventScroll, { passive: false });
   window.addEventListener("keydown", preventScrollForKeys, { passive: false });
   document.body.style.overflow = "hidden";
+  document.documentElement.style.overflow = "hidden";
 }
 
 // Функция для разблокировки скролла
@@ -20,6 +21,7 @@ function unlockScroll() {
   window.removeEventListener("touchmove", preventScroll);
   window.removeEventListener("keydown", preventScrollForKeys);
   document.body.style.removeProperty("overflow");
+  document.documentElement.style.removeProperty("overflow");
 }
 
 // Дополнительная функция для предотвращения прокрутки с помощью клавиш

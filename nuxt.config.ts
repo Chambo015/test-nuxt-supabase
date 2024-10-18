@@ -95,6 +95,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
+    "/": { prerender: true },
     "/course/**": { ssr: false },
     "/cabinet-infosecurity": { redirect: "/cabinet-infosecurity/progress", ssr: false },
     "/courses/1": { redirect: "/awareness" },
@@ -102,6 +103,7 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
+      crawlLinks: true,
       routes: ["/sitemap.xml", "/robots.txt"],
     },
   },

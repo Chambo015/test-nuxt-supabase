@@ -23,7 +23,7 @@ export class MyCourseAdapter {
         return journalDetail.module?.name;
       }
     }
-    return "Not Status";
+    return this.i18n("message.notStarted");
   }
 
   protected get adaptedPrice() {

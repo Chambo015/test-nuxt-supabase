@@ -4,7 +4,7 @@
       <main class="pt-[30px]  max-2xl:pr-4 max-md:px-4">
         <div class="relative">
           <h1 class="mb-5 font-NeueMachina text-2xl font-black text-[#3B3551]">
-            Прогресс прохождения по курсу “Кибергигиена”
+            Прогресс прохождения по курсу “{{ titleCourse }}”
           </h1>
         </div>
         <div class="broder-[#E5E7EB] rounded-3xl border bg-white px-7 py-[26px] max-md:p-0">
@@ -28,7 +28,7 @@
               </template>
             </Column>
             <Column
-              :field="PARTICIPANTS_DATA_FIELDS.fullName"
+              :field="REFERRALS_DATA_FIELDS.fullName"
               header="ФИО"
               :pt="{ bodyCell: ['max-w-[150px]'] }"
             >
@@ -37,7 +37,7 @@
               </template>
             </Column>
             <Column
-              :field="PARTICIPANTS_DATA_FIELDS.email"
+              :field="REFERRALS_DATA_FIELDS.email"
               header="E-mail"
               :row-editor="true"
             >
@@ -47,7 +47,7 @@
             </Column>
             <Column header="Статус прохождения">
               <template #body="slotProps">
-                <template v-if="slotProps.data[PARTICIPANTS_DATA_FIELDS.is_finished]">
+                <template v-if="slotProps.data[REFERRALS_DATA_FIELDS.is_finished]">
                   Прошел
                 </template>
                 <template v-else>
@@ -65,7 +65,7 @@
 <script setup lang="ts">
 import { Parse } from "~/shared/parse";
 
-enum PARTICIPANTS_DATA_FIELDS {
+enum REFERRALS_DATA_FIELDS {
   fullName = "fullName",
   email = "email",
   is_finished = "is_finished",
@@ -73,6 +73,7 @@ enum PARTICIPANTS_DATA_FIELDS {
 
 const route = useRoute();
 const courseId = computed(() => Parse.number(route.params.course_id));
+const titleCourse = ref("");
 
 const { $module } = useNuxtApp();
 const { data, status } = useLazyAsyncData(`referrals-groups-${courseId.value}`, async () => await $module.user.getReferralGroupByCourseId(courseId.value), {
@@ -83,13 +84,20 @@ const { data, status } = useLazyAsyncData(`referrals-groups-${courseId.value}`, 
       data: response.data.map((referral) => {
         return {
           ...referral,
-          [PARTICIPANTS_DATA_FIELDS.fullName]: `${Parse.string(referral.last_name)} ${Parse.string(referral.name)}`,
-          [PARTICIPANTS_DATA_FIELDS.email]: Parse.string(referral.email),
-          [PARTICIPANTS_DATA_FIELDS.is_finished]: Parse.boolean(referral.is_done),
+          [REFERRALS_DATA_FIELDS.fullName]: `${Parse.string(referral.last_name)} ${Parse.string(referral.name)}`,
+          [REFERRALS_DATA_FIELDS.email]: Parse.string(referral.email),
+          [REFERRALS_DATA_FIELDS.is_finished]: Parse.boolean(referral.is_done),
         };
       }),
     };
   },
+});
+
+onMounted(() => {
+  (async function () {
+    const response = await $module.course.getCourseById(courseId.value);
+    titleCourse.value = response.data.name;
+  })();
 });
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="navbar relative z-[9] flex h-navbarHeight items-center bg-white">
     <div class="w-full ">
-      <div class="mx-auto flex w-full max-w-screen-2xl items-center justify-between bg-white px-4">
+      <div class="mx-auto flex max-w-screen-2xl items-center justify-between bg-white px-4">
         <LocalizatedLink to="/">
           <BaseIcon name="logo-title-main" width="114" />
         </LocalizatedLink>
@@ -84,9 +84,9 @@
     >
       <ul class="pt-4">
         <li class="mb-2 flex h-9 items-center pl-8 text-sm">
-          <NuxtLink to="/about" @click="visible = false">
+          <LocalizatedLink to="/about" @click="visible = false">
             {{ $t("actions.sideBar.about") }}
-          </NuxtLink>
+          </LocalizatedLink>
         </li>
         <!-- <li class="h-9 pl-8 flex items-center text-sm mb-2 border-b border-gray-200 pb-4">
           {{ $t("actions.sideBar.contactUs") }}
@@ -102,10 +102,10 @@
             @click="visible = false"
           >
             <div v-if="item.separator" class="block h-1 w-full border-b border-gray-200"></div>
-            <NuxtLink v-else class="flex items-center py-4 pl-8 text-sm" :to="item.href" @click="item.call">
+            <LocalizatedLink v-else class="flex items-center py-4 pl-8 text-sm" :to="item.href" @click="item.call">
               <span class="mr-4" :class="item.icon"></span>
               <span v-if="item.localeKey">{{ $t(item.localeKey) }}</span>
-            </NuxtLink>
+            </LocalizatedLink>
           </li>
         </template>
       </ul>
@@ -130,8 +130,9 @@ import { useAuthStore } from "~/shared/store/auth.store";
 import { AppRoutes, AuthModalType } from "~/shared/enums";
 import { LangSwitcher } from "~/features/langSwitcher";
 import { LocalizatedLink } from "~/shared/ui";
+import { useLocalizatedRouter } from "~/shared/composables/useLocalizatedRouter";
 
-const router = useRouter();
+const { localeRouter } = useLocalizatedRouter();
 const authStore = useAuthStore();
 const visible = ref(false);
 const visibleIncidentModal = ref(false);
@@ -178,7 +179,7 @@ function toggle(event: any) {
 
 async function logout() {
   await authStore.logout();
-  router.replace("/");
+  localeRouter.replace("/");
 }
 </script>
 

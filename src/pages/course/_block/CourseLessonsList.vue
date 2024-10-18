@@ -61,6 +61,7 @@
 </template>
 
 <script setup lang="ts">
+import { useLocalizatedRouter } from "~/shared/composables/useLocalizatedRouter";
 import type { JournalDetail } from "~/shared/models/journal.model";
 
 defineProps<{
@@ -68,10 +69,10 @@ defineProps<{
 }>();
 const emit = defineEmits(["onClose"]);
 const journalStore = useJournalStore();
-const router = useRouter();
+const { localeRouter } = useLocalizatedRouter();
 
 function selectJournal(journal: JournalDetail) {
-  router.replace({ query: { article: journal.article?.id } });
+  localeRouter.replace({ query: { article: journal.article?.id } });
   journalStore.detail = journal;
   emit("onClose");
   window.scrollTo({

@@ -17,6 +17,9 @@
   margin: auto;
   //overflow: hidden;
 }
+html {
+  overflow-x: hidden;
+}
 body {
   font-family: 'Manrope', sans-serif;
   background: #fafafa;

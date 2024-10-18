@@ -1,6 +1,9 @@
 <template>
   <div class="main">
-    <div class="header">
+    <div aria-hidden="true" class="pointer-events-none absolute left-1/2 top-[-200px] -translate-x-1/2 select-none max-lg:top-[-340px]">
+      <Waves />
+    </div>
+    <div class="header relative">
       <div class="info">
         <p class="h-14 w-min bg-black text-3xl font-bold text-white">
           {{ $t("pages.awareness.course") }}
@@ -17,13 +20,13 @@
           }}</span>
         </div>
         <div class="sm:flex sm:pt-10">
-          <NuxtLink
+          <button
             class="green btn mt-6 h-10 rounded-full text-4xl font-normal text-black sm:mr-5 sm:mt-0"
-            @click="startCourse"
+            @click="() => startCourse()"
           >
             {{ $t("pages.awareness.start") }}
             <i class="pi pi-arrow-right ml-5 text-xl font-light"></i>
-          </NuxtLink>
+          </button>
           <a
             class="btn mt-6 h-10 text-4xl font-normal text-white sm:mt-0"
             href="https://t.me/citizensecbot"
@@ -47,6 +50,7 @@ import BasicsCyberHygiene from "./_block/BasicsCyberHygiene.vue";
 import PromoLesson from "./_block/PromoLesson.vue";
 import { CourseCurriculum } from "~/features/courses/courseCurriculum";
 import { useStartCourse } from "~/features/startCourse";
+import Waves from "~/shared/components/svg/Waves.vue";
 import { QueryCoursePage } from "~/shared/config";
 import { AwarenessSeo } from "~/shared/seo";
 
@@ -66,8 +70,8 @@ const { startCourse } = useStartCourse(() => course.value ? course?.value?.data 
 }
 
 .header {
-  background-size: cover;
-  background: url('assets/images/awareness-header.png') no-repeat center -100px;
+  // background-size: cover;
+  // background: url('assets/images/awareness-header.png') no-repeat center -100px;
   padding-bottom: 240px;
   padding-top: 140px;
 

@@ -11,6 +11,7 @@
 import UIButtonBuyCourse from "./UIButtonBuyCourse.vue";
 import UIButtonStartCorse from "./UIButtonStartCorse.vue";
 import { useStartCourse } from "~/features/startCourse";
+import { useLocalizatedRouter } from "~/shared/composables/useLocalizatedRouter";
 import { usePaymentsStore } from "~/shared/store/payments.store";
 import type { Course } from "~/types/course.type";
 
@@ -19,6 +20,7 @@ const props = defineProps<{
   variant: "buy" | "start"
 }>();
 
+const { localeNavigateTo } = useLocalizatedRouter();
 const paymentsStore = usePaymentsStore();
 const { startCourse } = useStartCourse(() => props.course, {
   callPayCourse(onSuccess) {
@@ -31,7 +33,7 @@ function handleBuyCourse(e: MouseEvent, course: Course) {
   e.stopPropagation();
 
   if (course.id === 1) {
-    return navigateTo("/awareness");
+    return localeNavigateTo("/awareness");
   } else {
     // if (course.is_purchased) return toast.add({ severity: "warn", summary: "Оплачено", detail: "Курс уже приобретен", life: 3000 });
     startCourse();

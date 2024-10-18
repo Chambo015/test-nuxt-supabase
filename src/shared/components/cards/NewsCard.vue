@@ -1,5 +1,5 @@
 <template>
-  <div class="group mb-4 flex grow cursor-pointer flex-col rounded-xl bg-white p-6 text-left shadow-sm transition-shadow hover:shadow-lg" @click="openContent">
+  <LocalizatedLink class="group mb-4 flex grow cursor-pointer flex-col rounded-xl bg-white p-6 text-left shadow-sm transition-shadow hover:shadow-lg" :to="`/feed/${props.data.id}`">
     <div class="flex flex-wrap items-start gap-1">
       <div
         class="tag-type mr-4 rounded-md px-2 text-sm max-md:text-xs"
@@ -42,21 +42,19 @@
         PRO
       </div>
     </div>
-  </div>
+  </LocalizatedLink>
 </template>
 
 <script setup lang="ts">
 import { LigthenColor } from "~/shared/utils/lighten-color";
 import type { Content } from "~/types/content.type";
 import { Parse } from "~/shared/parse";
+import { LocalizatedLink } from "~/shared/ui";
 
 const props = defineProps<{
   data: Content
 }>();
 
-function openContent() {
-  navigateTo(`/feed/${props.data.id}`);
-}
 const dateFormatted = computed(() => props.data.created_at ? Parse.date(props.data.created_at) : "");
 </script>
 
@@ -66,6 +64,7 @@ const dateFormatted = computed(() => props.data.created_at ? Parse.date(props.da
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
+  line-clamp: 4;
   max-height: 100px;
 }
 

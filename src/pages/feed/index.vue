@@ -1,10 +1,10 @@
 <template>
   <div class="container relative">
-    <div class="grid grid-cols-[1fr_min(590px,100vw)_1fr] gap-x-4 pt-[30px] max-md:grid-cols-1">
-      <div class="max-md:hidden"></div>
+    <div class="grid grid-cols-[1fr_min(590px,100vw)_1fr] gap-x-4 pt-[30px] max-lg:grid-cols-1">
+      <div class="max-lg:hidden"></div>
       <div>
-        <FeedHistory />
-        <div class="mb-5 mt-9 flex items-center justify-between max-md:px-4">
+        <ShortsFeed />
+        <div class="mb-5 mt-9 flex items-center justify-between max-lg:px-4">
           <h2 class="font-NeueMachina text-2xl font-extrabold tracking-wider text-gray-700">
             {{ $t("pages.feed.title") }}
           </h2>
@@ -39,7 +39,7 @@
           @click="moreLoad"
         />
       </div>
-      <div class="relative flex flex-col items-end pr-4">
+      <div class="relative flex justify-end pr-4">
         <FeedBanner v-if="$device.isDesktop" />
       </div>
     </div>
@@ -49,12 +49,12 @@
 <script setup lang="ts">
 import TagsSection from "./_blocks/TagsSection.vue";
 import TypeSelect from "./_blocks/TypeSelect.vue";
-import FeedHistory from "~/pages/feed/_blocks/feed-history.vue";
 import FeedBanner from "~/pages/feed/_blocks/feed-banner.vue";
 import FeedCardSkeleton from "~/shared/components/cards/FeedCardSkeleton.vue";
 import FeedCard from "~/shared/components/cards/FeedCard.vue";
 import { FeedSeo } from "~/shared/seo";
 import { useUrlSearchParams } from "~/shared/composables/useUrlSearchParams";
+import { ShortsFeed } from "~/features/feeds/shortHistories";
 
 useSeoMeta(FeedSeo);
 

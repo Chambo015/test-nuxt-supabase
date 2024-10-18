@@ -31,17 +31,17 @@ export class ContentRepository {
   //   contentStore.setContent(Parse.list(data.data, Content.fromJson));
   // }
 
-  static async short() {
-    const contentStore = useContentStore();
-    const data = await useFetchApi({
-      url: "content/shorts",
-      headers: {
-        method: HttpMethod.GET,
-      },
-    });
+  // static async short() {
+  //   const contentStore = useContentStore();
+  //   const data = await useFetchApi({
+  //     url: "content/shorts",
+  //     headers: {
+  //       method: HttpMethod.GET,
+  //     },
+  //   });
 
-    contentStore.setShorts(Parse.list(data.data, Short.fromJson));
-  }
+  //   contentStore.setShorts(Parse.list(data.data, Short.fromJson));
+  // }
 
   static async banner() {
     const contentStore = useContentStore();

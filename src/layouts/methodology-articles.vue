@@ -152,6 +152,7 @@
 </template>
 
 <script setup lang="ts">
+const localeRoute = useLocaleRoute();
 const router = useRouter();
 const route = useRoute();
 const userStore = useAuthStore();
@@ -165,84 +166,84 @@ const items = ref(
       label: "1. Что такое информационная безопасность и какие документы ее регулируют?",
       link: "/methodology/1",
       command() {
-        router.push(this.link);
+        router.push(localeRoute(this.link)?.fullPath || this.link);
       },
     },
     {
       label: "2. Кто и почему должен соблюдать требования ИБ в РК?",
       link: "/methodology/2",
-      command: () => {
-        router.push("/methodology/2");
+      command() {
+        router.push(localeRoute(this.link)?.fullPath || this.link);
       },
     },
     {
       label: "3. Что же такое КВОИКИ?",
       link: "/methodology/3",
-      command: () => {
-        router.push("/methodology/3");
+      command() {
+        router.push(localeRoute(this.link)?.fullPath || this.link);
       },
     },
     {
       label: "4. Чем занимается Подразделение по ИБ?",
       link: "/methodology/4",
-      command: () => {
-        router.push("/methodology/4");
+      command() {
+        router.push(localeRoute(this.link)?.fullPath || this.link);
       },
     },
     {
       label: "5. Что такое ОЦИБ, зачем и кому нужен?",
       link: "/methodology/5",
-      command: () => {
-        router.push("/methodology/5");
+      command() {
+        router.push(localeRoute(this.link)?.fullPath || this.link);
       },
     },
     {
       label: "6. Что такое испытания на соответствие требованиям ИБ, кто их проводит и кому нужно проходить?",
       link: "/methodology/6",
-      command: () => {
-        router.push("/methodology/6");
+      command() {
+        router.push(localeRoute(this.link)?.fullPath || this.link);
       },
     },
     {
       label: "7. Что такое аудит информационных систем, кто проводит и кому нужно проходить?",
       link: "/methodology/7",
-      command: () => {
-        router.push("/methodology/7");
+      command() {
+        router.push(localeRoute(this.link)?.fullPath || this.link);
       },
     },
     {
       label: "8. Что такое инструментальное обследование компонентов ИС?",
       link: "/methodology/8",
-      command: () => {
-        router.push("/methodology/8");
+      command() {
+        router.push(localeRoute(this.link)?.fullPath || this.link);
       },
     },
     {
       label: "9. Что такое реестр доверенного программного обеспечения?",
       link: "/methodology/9",
-      command: () => {
-        router.push("/methodology/9");
+      command() {
+        router.push(localeRoute(this.link)?.fullPath || this.link);
       },
     },
     {
       label: "10. Что такое оценочный уровень доверия или соответствие",
       link: "/methodology/10",
-      command: () => {
-        router.push("/methodology/10");
+      command() {
+        router.push(localeRoute(this.link)?.fullPath || this.link);
       },
     },
     {
       label: "11. Полезные ссылки и ресурсы",
       link: "/methodology/11",
-      command: () => {
-        router.push("/methodology/11");
+      command() {
+        router.push(localeRoute(this.link)?.fullPath || this.link);
       },
     },
     {
       label: "12. Обратная связь",
       link: "/methodology/12",
-      command: () => {
-        router.push("/methodology/12");
+      command() {
+        router.push(localeRoute(this.link)?.fullPath || this.link);
       },
     },
   ].reverse(),
@@ -250,7 +251,7 @@ const items = ref(
 
 const paginationArrow = computed(() => {
   const data = [...items.value].reverse();
-  const currentIdx = data.findIndex(i => i.link === route.path);
+  const currentIdx = data.findIndex(i => route.path.includes(i.link));
   return {
     left: currentIdx < 1 ? null : data[currentIdx - 1],
     right: currentIdx + 1 >= data.length ? null : data[currentIdx + 1],

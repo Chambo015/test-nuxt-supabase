@@ -1,13 +1,14 @@
 <template>
   <div
     class="relative isolate mx-auto grid max-w-screen-2xl  items-center "
-    :class="[$device.isDesktop ? 'grid-cols-[minmax(200px,260px)_1fr_minmax(200px,260px)] max-lg:grid-cols-[minmax(200px,260px)_1fr]' : 'grid-cols-1 overflow-x-hidden']"
+    :class="[$device.isDesktop ? 'grid-cols-[240px_1fr_240px] max-lg:grid-cols-[minmax(200px,260px)_1fr]' : 'grid-cols-1 overflow-x-hidden']"
   >
-    <div aria-hidden="true" class="pointer-events-none absolute left-1/2 top-[-180px] -translate-x-1/2 select-none max-lg:top-[-340px]">
+    <div aria-hidden="true" class="pointer-events-none absolute left-1/2 top-[-200px] -translate-x-1/2 select-none  max-lg:top-[-340px]">
       <Waves />
     </div>
+    <div class="absolute inset-x-0 top-[400px] h-[300px] bg-gradient-to-b from-transparent via-main-bg to-main-bg"></div>
     <div v-if="course?.data" class="relative col-span-1 col-start-2 overflow-x-hidden max-lg:px-4 max-md:col-start-1">
-      <header class="flex min-h-[750px] flex-col items-start py-[140px] max-md:min-h-[450px] max-sm:py-[100px] max-[440px]:py-[60px]">
+      <header class="flex min-h-[550px] flex-col items-start pt-[140px] max-md:min-h-[450px] max-sm:py-[100px] max-[440px]:py-[60px]">
         <TopHeader>
           <p class="font-NeueMachina text-3xl text-white max-md:text-2xl">
             {{ $t("pages.awareness.course") }}
@@ -15,9 +16,9 @@
         </TopHeader>
         <MainHeader
           bg-color="primary"
-          class="flex w-full !text-[70px] !leading-[70px] max-xl:!text-[60px] max-xl:!leading-[60px] max-md:py-2 max-md:pb-4 max-md:!text-4xl max-sm:text-wrap "
+          class="flex w-full items-center max-md:py-2 max-md:pb-4"
         >
-          {{ course.data.name }}
+          <span class="!text-[70px] font-medium !leading-[70px] max-xl:!text-[60px] max-xl:!leading-[60px] max-md:!text-4xl max-sm:text-wrap">{{ course.data.name }}</span>
         </MainHeader>
         <TopHeader class="ml-auto">
           <p class="font-NeueMachina text-3xl text-white max-md:text-lg">
@@ -40,10 +41,10 @@
 </template>
 
 <script setup lang="ts">
-import { AdapterCourse } from "~/entities/course";
-import { CourseCurriculum } from "~/features/courses/courseCurriculum";
-import { CourseListDescription } from "~/features/courses/courseDescriptionSheet";
-import { PayStartCourseButton, useStartCourse } from "~/features/startCourse";
+import {AdapterCourse} from "~/entities/course";
+import {CourseCurriculum} from "~/features/courses/courseCurriculum";
+import {CourseListDescription} from "~/features/courses/courseDescriptionSheet";
+import {PayStartCourseButton, useStartCourse} from "~/features/startCourse";
 import MainHeader from "~/shared/components/headers/MainHeader.vue";
 import TopHeader from "~/shared/components/headers/TopHeader.vue";
 import Waves from "~/shared/components/svg/Waves.vue";
@@ -58,7 +59,6 @@ definePageMeta({
   ],
 });
 
-// useSeoMeta(AwarenessSeo);
 const { $module } = useNuxtApp();
 const { id: courseId } = useRoute().params;
 

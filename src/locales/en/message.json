@@ -43,6 +43,7 @@
   "recommendations": "You will be interested",
   "free": "Free",
   "courseDone": "Course completed",
+  "notStarted": "Not started",
   "not_payed_access_to_course": "Unpaid",
   "500": "Server error"
 }

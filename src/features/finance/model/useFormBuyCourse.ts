@@ -36,7 +36,7 @@ export function useFormBuyCourse({ onPay, onCreateInvoice, onCloseForm }: FormBu
         isLoading.value = true;
 
         const result = await onCreateInvoice({
-          enableCabinetIS: form.cabinetIS.$value,
+          enableCabinetIS: form.isGift.$value && form.cabinetIS.$value,
           isGift: form.isGift.$value,
           inviteCount: form.isGift.$value && form.countInvite.$value ? form.countInvite.$value : undefined,
           participants: toObject(form).inviteUsers,
@@ -65,7 +65,7 @@ export function useFormBuyCourse({ onPay, onCreateInvoice, onCloseForm }: FormBu
         const result = await onPay();
         if (result === ReturnTypeStep.FAILED) {
           isLoading.value = false;
-          return console.log('Fail Last Step');
+          return console.error('Fail Last Step');
         }
         if (result === ReturnTypeStep.SUCCESS) onCloseForm();
       }

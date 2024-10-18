@@ -67,7 +67,9 @@
     "contacts": "Contacts",
     "news": "News",
     "aboutCompany": "About Company",
-    "cabinet-infosecurity": "Cabinet IS"
+    "cabinet-infosecurity": "Cabinet IS",
+    "progress": "Progress",
+    "referrals": "Referral links"
   },
   "downloadAll": "Download All",
   "noticeIncident": "Notice an Incident?",

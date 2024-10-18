@@ -246,7 +246,7 @@
             <ArticleAlert type="success" class="mt-5">
               <template #title>
                 <p class="text-sm text-white font-inter font-light">
-                  Для изучения безопасной работы с персональными данными в рамках курса по кибергигиене, <NuxtLink class="underline" to="/awareness">переходите сюда</NuxtLink>
+                  Для изучения безопасной работы с персональными данными в рамках курса по кибергигиене, <LocalizatedLink class="underline" to="/awareness">переходите сюда</LocalizatedLink>
                 </p>
               </template>
             </ArticleAlert>
@@ -545,9 +545,9 @@
               <div class="font-inter mt-8 max-lg:grid-cols-1">
                 <p>
                   Со стандартами в ЕТ можете ознакомиться
-                  <NuxtLink class="text-main-purple" to="/methodology/iso-et">
+                  <LocalizatedLink class="text-main-purple" to="/methodology/iso-et">
                     тут
-                  </NuxtLink>
+                  </LocalizatedLink>
                 </p>
               </div>
               <h4 class="text-[#464646] text-[35px] leading-tight font-extrabold mt-14">
@@ -614,6 +614,7 @@ import TopHeader from "~/shared/components/headers/TopHeader.vue";
 import ArticleAlert from "~/pages/methodology/_block/article-alert.vue";
 import ConclusionContainer from "~/pages/methodology/_block/conclusion-container.vue";
 import BaseIcon from "~/shared/components/BaseIcon.vue";
+import { LocalizatedLink } from "~/shared/ui";
 
 /* const data = ref({
   key: "0",

@@ -20,6 +20,7 @@
 </template>
 
 <script setup lang="ts">
+import { useLocalizatedRouter } from "../composables/useLocalizatedRouter";
 import { AuthModalType } from "~/shared/enums/common.enum";
 import { lockScroll, unlockScroll } from "~/shared/utils/lock-scroll";
 
@@ -29,11 +30,11 @@ const props = defineProps<{
 }>();
 
 const authStore = useAuthStore();
-const router = useRouter();
+const { localeRouter } = useLocalizatedRouter();
 const route = useRoute();
 
 function handleAuth(modal: AuthModalType) {
-  router.push(props.redirect || route.matched[0]);
+  localeRouter.push(props.redirect || route.matched[0]);
   authStore.modal = modal;
 }
 

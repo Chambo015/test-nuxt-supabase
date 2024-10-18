@@ -20,8 +20,9 @@ Allow: /courses
 Disallow: /profile
 Disallow: /payments
 Disallow: /reset-password
-Disallow: /cabinet-infosecurity
+Disallow: /cabinet-infosecurity/
 Disallow: /my-courses
+Disallow: /offer
 
 Sitemap: ${config.public.BaseSiteUrl}/sitemap.xml`
     : `User-agent: *

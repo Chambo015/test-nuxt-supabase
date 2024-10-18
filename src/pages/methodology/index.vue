@@ -65,12 +65,12 @@
               <p class="mb-8 font-NeueMachina text-[20px] font-medium !leading-none">
                 {{ $t(n.locale) }}
               </p>
-              <NuxtLink
+              <LocalizatedLink
                 class="hover-link-effect mt-auto flex items-center self-start font-inter font-semibold"
                 :to="n.link"
               >
                 {{ $t('actions.moreButton') }} <i class="pi pi-arrow-up ml-3 rotate-45 text-sm"></i>
-              </NuxtLink>
+              </LocalizatedLink>
             </div>
           </div>
         </div>
@@ -83,20 +83,8 @@
 import MainHeader from "~/shared/components/headers/MainHeader.vue";
 import TopHeader from "~/shared/components/headers/TopHeader.vue";
 import { METHODOLOGY_ARTICLES } from "~/shared/constants";
+import { LocalizatedLink } from "~/shared/ui";
 
-/* useHead({
-  title: "Методология",
-  meta: [
-    {
-      name: "description",
-      content: "Миссия проекта состоит в том, чтобы сделать сложные стандарты ISO понятными и простыми во внедрении и использовании.",
-    },
-    {
-      name: "og:image",
-      content: "https://citizensec.kz/methodology-og.jpg",
-    },
-  ],
-}); */
 useSeoMeta({
   ogTitle: "1.0 Методология",
   title: "Методология",

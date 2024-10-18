@@ -32,43 +32,44 @@
                       Хочу купить доступ к курсу для других
                     </label>
                   </div>
-                  <!-- Invite Count -->
                   <Transition
                     enter-active-class="transition-all duration-500"
                     enter-from-class="translate-y-5 opacity-0"
                     leave-active-class="transition-all"
                     leave-to-class="translate-y-5 opacity-0"
                   >
-                    <div v-if="steps[0].isGift.$value" class="flex flex-col gap-2">
-                      <label class="text-sm font-medium text-[#344054]" :for="form.countInvite.$label">{{
-                        $t(form.countInvite.$label)
-                      }}</label>
-                      <InputNumber
-                        v-model="steps[0].countInvite.$value"
-                        :aria-describedby="`${form.countInvite.$label}-help`"
-                        :input-id="form.countInvite.$label"
-                        :max="MAX_PARTICIPANTS_INVITE"
-                        :min="0"
-                        mode="decimal"
-                        placeholder="Количество пользователей"
-                        :pt="{
-                          root: 'h-[50px]',
-                        }"
-                        show-buttons
-                      />
-                      <small v-if="steps[0].countInvite.$error && submitted" :id="`${form.countInvite.$label}-help`">{{
-                        steps[0].countInvite.$error.message
-                      }}</small>
+                    <div v-if="steps[0].isGift.$value" class="space-y-5">
+                      <!-- Invite Count -->
+                      <div class="flex flex-col gap-2">
+                        <label class="text-sm font-medium text-[#344054]" :for="form.countInvite.$label">{{
+                          $t(form.countInvite.$label)
+                        }}</label>
+                        <InputNumber
+                          v-model="steps[0].countInvite.$value"
+                          :aria-describedby="`${form.countInvite.$label}-help`"
+                          :input-id="form.countInvite.$label"
+                          :max="MAX_PARTICIPANTS_INVITE"
+                          :min="0"
+                          mode="decimal"
+                          placeholder="Количество пользователей"
+                          :pt="{
+                            root: 'h-[50px]',
+                          }"
+                          show-buttons
+                        />
+                        <small v-if="steps[0].countInvite.$error && submitted" :id="`${form.countInvite.$label}-help`">{{
+                          steps[0].countInvite.$error.message
+                        }}</small>
+                      </div>
+                      <!-- cabinetIS -->
+                      <div class="flex items-start">
+                        <Checkbox v-model="steps[0].cabinetIS.$value" :binary="true" input-id="cabinetIS" />
+                        <label class="ml-2 text-sm font-medium text-[#344054]" for="cabinetIS">
+                          Подключить кабинет ИБ
+                        </label>
+                      </div>
                     </div>
                   </Transition>
-
-                  <!-- cabinetIS -->
-                  <div class="flex items-start">
-                    <Checkbox v-model="steps[0].cabinetIS.$value" :binary="true" input-id="cabinetIS" />
-                    <label class="ml-2 text-sm font-medium text-[#344054]" for="cabinetIS">
-                      Подключить кабинет ИБ
-                    </label>
-                  </div>
                 </div>
                 <div class="flex items-end justify-between pt-4">
                   <div class="font-inter text-sm font-semibold text-[#344054]">
@@ -244,7 +245,7 @@ const { steps, goToPrev, isLoading, onSubmit, submitted, form, currentStepIdx } 
   },
 });
 
-const totalPrice = computed(() => thousandSeparator((paymentsStore.currentBuyCourse?.price || 0) * (form.countInvite.$value || 1)));
+const totalPrice = computed(() => thousandSeparator((paymentsStore.currentBuyCourse?.price || 0) * (form.isGift.$value ? form.countInvite.$value || 1 : 1)));
 </script>
 
 <style scoped>

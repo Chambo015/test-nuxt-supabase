@@ -31,17 +31,20 @@
 
 <script setup lang="ts">
 import type { AdapterCourseReturnType } from "~/entities/course";
+import { useLocalizatedRouter } from "~/shared/composables/useLocalizatedRouter";
 import type { Course } from "~/types/course.type";
 
 defineProps<{
   course: AdapterCourseReturnType
 }>();
 
+const { localeNavigateTo } = useLocalizatedRouter();
+
 async function handleClickCourse(course: Course) {
   if (course.id === 1) {
-    navigateTo("/awareness");
+    localeNavigateTo("/awareness");
   } else {
-    navigateTo(`/courses/${course.id}`);
+    localeNavigateTo(`/courses/${course.id}`);
   }
 }
 </script>

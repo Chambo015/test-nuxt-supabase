@@ -8,7 +8,6 @@ import type { ResponseMeta } from "~/types/response.type";
 import type { Content } from "~/types/content.type";
 
 interface AuthStateType {
-  shorts: Short[]
   banners: Banner[]
   contents: Content[]
   pagination: {
@@ -20,7 +19,6 @@ interface AuthStateType {
 
 export const useContentStore = defineStore("content", {
   state: (): AuthStateType => ({
-    shorts: [],
     banners: [],
     contents: [],
     pagination: {
@@ -30,9 +28,6 @@ export const useContentStore = defineStore("content", {
     currentContent: undefined,
   }),
   actions: {
-    setShorts(payload: Short[]) {
-      this.shorts = payload;
-    },
     setBanners(payload: Banner[]) {
       this.banners = payload;
     },

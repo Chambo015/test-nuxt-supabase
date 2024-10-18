@@ -4,7 +4,7 @@
     :class="authStore.isLoggedIn ? ' grid-cols-5' : ' grid-cols-4'"
   >
     <template v-for="m in menuList" :key="m.name">
-      <NuxtLink active-class="active" class="flex flex-col px-0.5 [&.active_span]:text-violet-600 [&.active_svg]:text-violet-600" :to="m.type">
+      <LocalizatedLink active-class="active" class="flex flex-col px-0.5 [&.active_span]:text-violet-600 [&.active_svg]:text-violet-600" :to="m.type">
         <BaseIcon
           class="mx-auto text-gray-400"
           :class="{ 'text-violet-600': route.path === m.type }"
@@ -17,13 +17,14 @@
         >
           {{ $t(`actions.sideBar.${m.name}`) }}
         </span>
-      </NuxtLink>
+      </LocalizatedLink>
     </template>
-    <NuxtLink
+    <LocalizatedLink
       v-if="authStore.isLoggedIn"
       class="flex flex-col px-0.5"
       :to="AppRoutes.Profile"
     >
+      <!-- TODO: Change active router like group-[.active] -->
       <BaseIcon
         class="mx-auto text-gray-400"
         :class="{ 'text-violet-600': route.path === AppRoutes.Profile }"
@@ -35,13 +36,14 @@
       >
         Профиль
       </span>
-    </NuxtLink>
+    </LocalizatedLink>
   </div>
 </template>
 
 <script setup lang="ts">
 import BaseIcon from "~/shared/components/BaseIcon.vue";
 import { AppRoutes } from "~/shared/enums";
+import { LocalizatedLink } from "~/shared/ui";
 
 const route = useRoute();
 

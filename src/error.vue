@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { LocalizatedLink } from "./shared/ui";
 import type { NuxtError } from "#app";
 
 defineProps({
@@ -13,8 +14,8 @@ defineProps({
     </h1>
     <h2>{{ error?.statusCode }}</h2>
     <p>{{ error?.statusMessage }}</p>
-    <NuxtLink class="rounded-2xl px-10 py-4 ring-1 ring-white/10" to="/">
+    <LocalizatedLink class="rounded-2xl px-10 py-4 ring-1 ring-white/10" to="/">
       Go back home
-    </NuxtLink>
+    </LocalizatedLink>
   </div>
 </template>

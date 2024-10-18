@@ -31,8 +31,15 @@ export interface Banner {
 }
 
 export interface Short {
+  id: number
   file: string
   name: string
   note: string
   link: string
+  thumbnail: string
+}
+
+export enum ShortType {
+  VIDEO = 0,
+  IMAGE = 1,
 }

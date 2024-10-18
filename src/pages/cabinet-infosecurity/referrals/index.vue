@@ -26,9 +26,9 @@
           >
             <Column :field="ReferralsGroupDataFields.course" header="Курс">
               <template #body="slotProps">
-                <NuxtLink class="text-[#734CC9]" :to="`/cabinet-infosecurity/referrals/${slotProps.data.course_id}`">
+                <LocalizatedLink class="text-[#734CC9]" :to="`/cabinet-infosecurity/referrals/${slotProps.data.course_id}`">
                   {{ slotProps.data[slotProps.field] }}
-                </NuxtLink>
+                </LocalizatedLink>
               </template>
             </Column>
             <Column :field="ReferralsGroupDataFields.allParticipants" header="Всего пользователей" />
@@ -43,6 +43,7 @@
 <script setup lang="ts">
 import { ButtonReferralLink } from "~/features/cabinetInfosecurity/referralLink";
 import { Parse } from "~/shared/parse";
+import { LocalizatedLink } from "~/shared/ui";
 
 enum ReferralsGroupDataFields {
   course = "course_name",

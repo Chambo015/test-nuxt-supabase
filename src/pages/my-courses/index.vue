@@ -30,7 +30,7 @@
               </LocalizatedLink>
             </div>
             <div v-else class="flex min-h-[50dvh] items-center justify-center lg:mr-sidebarWidth">
-              <Empty action-title="Найти курсы" description="Начните изучать наши курсы и отслеживайте прогресс курсов" title="У вас нет курсов" @action="$router.push('/courses')" />
+              <Empty action-title="Найти курсы" description="Начните изучать наши курсы и отслеживайте прогресс курсов" title="У вас нет курсов" @action="localeRouter.push('/courses')" />
             </div>
           </div>
         </div>
@@ -42,12 +42,14 @@
 <script setup lang="ts">
 import { MyCourseCard, useMyCourses } from "~/features/courses/myCourses";
 import BaseIcon from "~/shared/components/BaseIcon.vue";
+import { useLocalizatedRouter } from "~/shared/composables/useLocalizatedRouter";
 import { Empty, LocalizatedLink } from "~/shared/ui";
 
 definePageMeta({
   auth: true,
 });
 
+const { localeRouter } = useLocalizatedRouter();
 const { data } = useMyCourses();
 
 const homeBreadcrumb = ref({

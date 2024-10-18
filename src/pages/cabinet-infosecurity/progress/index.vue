@@ -21,9 +21,9 @@
           >
             <Column :field="GroupISDataFields.course" header="Курс">
               <template #body="slotProps">
-                <NuxtLink class="text-[#734CC9]" :to="`/cabinet-infosecurity/progress/${slotProps.data.id}`">
+                <LocalizatedLink class="text-[#734CC9]" :to="`/cabinet-infosecurity/progress/${slotProps.data.id}`">
                   {{ slotProps.data[slotProps.field] }}
-                </NuxtLink>
+                </LocalizatedLink>
               </template>
             </Column>
             <Column :field="GroupISDataFields.date" header="Дата покупки" />
@@ -44,6 +44,7 @@
 
 <script setup lang="ts">
 import { Parse } from "~/shared/parse";
+import { LocalizatedLink } from "~/shared/ui";
 
 enum GroupISDataFields {
   course = "course_name",

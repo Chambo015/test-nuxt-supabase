@@ -143,6 +143,7 @@ import { CourseRepository } from "~/shared/repository/course.repository";
 import { JournalRepository } from "~/shared/repository/journal.repository";
 import { useAuthStore } from "~/shared/store/auth.store";
 import { useJournalStore } from "~/shared/store/journal.store";
+import { useLocalizatedRouter } from "~/shared/composables/useLocalizatedRouter";
 // import CourseMaterialList from "./_block/CourseMaterialList.vue";
 
 definePageMeta({
@@ -150,7 +151,7 @@ definePageMeta({
 });
 
 const route = useRoute();
-const router = useRouter();
+const { localeRouter } = useLocalizatedRouter();
 const journalStore = useJournalStore();
 const authStore = useAuthStore();
 
@@ -176,7 +177,7 @@ onMounted(() => {
 });
 
 async function nextJournal(id: number) {
-  await router.replace({ query: {} });
+  await localeRouter.replace({ query: {} });
   await JournalRepository.nextJournal(id);
   await JournalRepository.getByCourse(+route.params.id);
   window.scrollTo({

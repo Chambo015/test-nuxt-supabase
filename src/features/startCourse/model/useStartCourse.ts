@@ -1,4 +1,5 @@
 import type { LocationQueryRaw, RouteLocationRaw } from "vue-router";
+import { useLocalizatedRouter } from "~/shared/composables/useLocalizatedRouter";
 import { AuthModalType, StatusCode } from "~/shared/enums";
 import type { Course } from "~/types/course.type";
 
@@ -15,7 +16,7 @@ export function useStartCourse(course: MaybeRefOrGetter<Course | null>, options?
   const { callPayCourse } = options || {};
 
   const { $module, $i18n } = useNuxtApp();
-  const localeRoute = useLocaleRoute();
+  const { localeNavigateTo } = useLocalizatedRouter();
   const tost = useToast();
   const authStore = useAuthStore();
 
@@ -28,7 +29,7 @@ export function useStartCourse(course: MaybeRefOrGetter<Course | null>, options?
     if (!courseId.value) return;
 
     const { queryCourseLink } = props || {};
-    const navigateToCourse = () => navigateTo(localeRoute({ path: `/course/${courseId.value}`, query: queryCourseLink })?.fullPath);
+    const navigateToCourse = () => localeNavigateTo({ path: `/course/${courseId.value}`, query: queryCourseLink });
 
     /** Если курс бесплатный и он есть в Моих Курсах, переходим к курсу */
     if (isFree && authStore.courseIds.includes(courseId.value)) return navigateToCourse();

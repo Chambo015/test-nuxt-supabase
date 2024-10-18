@@ -27,11 +27,6 @@
                 {{ $t('actions.sideBar.news') }}
               </LocalizatedLink>
             </li>
-            <!-- <li>
-              <LocalizatedLink class="hover-link-effect">
-                {{ $t('actions.sideBar.contacts') }}
-              </LocalizatedLink>
-            </li> -->
           </ul>
           <ul class="space-y-1 font-inter text-[10px] leading-tight text-white">
             <li v-for="item in helpfulLinks" :key="item.link">

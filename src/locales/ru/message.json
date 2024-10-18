@@ -43,6 +43,7 @@
   "recommendations": "Вам также будет интересно",
   "free": "Бесплатный",
   "courseDone": "Курс завершен",
+  "notStarted": "Не начат",
   "not_payed_access_to_course": "Не оплачен",
   "fail": "Ошибка {text}",
   "500": "Ошибка сервера"

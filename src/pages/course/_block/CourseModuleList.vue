@@ -58,15 +58,16 @@
 import { JournalRepository } from "~/shared/repository/journal.repository";
 import type { JournalDetail } from "~/shared/models/journal.model";
 import ICheck from "~/assets/images/icons/check.svg";
+import { useLocalizatedRouter } from "~/shared/composables/useLocalizatedRouter";
 
 const toast = useToast();
 const { t } = useI18n();
 
-const router = useRouter();
+const { localeRouter } = useLocalizatedRouter();
 const journalStore = useJournalStore();
 
 function selectJournal(journal: JournalDetail) {
-  router.replace({ query: { article: journal.article?.id } });
+  localeRouter.replace({ query: { article: journal.article?.id } });
   journalStore.detail = journal;
 }
 

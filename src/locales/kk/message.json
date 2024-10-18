@@ -42,6 +42,7 @@
   "recommendations": "Сізді қызықтыруы мүмкін",
   "free": "Тегін",
   "courseDone": "Курс аяқталды",
+  "notStarted": "Басталмаған",
   "not_payed_access_to_course": "Төленбеген",
   "500": "Ошибка сервера"
 }

@@ -8,7 +8,7 @@
         <div class="sticky left-0 top-[30px]">
           <div v-if="isCabinetInfoSecurity" class="mb-8 ml-[18px] w-[120px] text-nowrap">
             <h1 class="text-nowrap bg-gradient-to-r from-black to-primary bg-clip-text font-NeueMachina text-lg font-bold text-transparent">
-              Кабинет ИБ
+              {{ $t("actions.sideBar.cabinet-infosecurity") }}
             </h1>
           </div>
           <Button

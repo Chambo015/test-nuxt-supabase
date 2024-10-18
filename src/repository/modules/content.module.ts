@@ -3,7 +3,7 @@
 import FetchFactory from "../factory";
 import type { Options } from "../options";
 import { Parse } from "~/shared/parse";
-import type { Content, ContentType } from "~/types/content.type";
+import type { Content, ContentType, Short } from "~/types/content.type";
 import { HttpMethod } from "~/shared/enums/http.enum";
 import type { ResponseWithMeta } from "~/types/response.type";
 
@@ -75,30 +75,18 @@ class ContentModule extends FetchFactory {
 
   /**
    *
-   * @param asyncDataOptions
-   * @param fetchOptions
+   * @param options
    * @returns Short[]
    */
-  // async getShorts(
-  //   asyncDataOptions?: AsyncDataOptions<{ data: Short[] }>,
-  //   fetchOptions?: FetchOptions<"json">,
-  // ) {
-  //   return useAsyncData(() => {
-  //     return this.call<{ data: Short[] }>(
-  //       `${this.RESOURCE}/shorts`,
-  //       {
-  //         ...fetchOptions,
-  //         method: HttpMethod.GET,
-  //       },
-  //     );
-  //   }, {
-  //     ...asyncDataOptions,
-  //     transform: data => ({
-  //       ...data,
-  //       data: Parse.list(data.data, ContentModule.shortParser),
-  //     }),
-  //   });
-  // }
+  async getShorts(options?: Options<{ data: Short[] }>) {
+    return this.call<{ data: Short[] }>(
+        `${this.RESOURCE}/shorts`,
+        {
+          ...options?.fetchOptions,
+          method: HttpMethod.GET,
+        },
+    );
+  }
 
   /**
    *

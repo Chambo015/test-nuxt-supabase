@@ -61,17 +61,20 @@ import { LigthenColor } from "~/shared/utils/lighten-color";
 import type { Content } from "~/types/content.type";
 import { Parse } from "~/shared/parse";
 import IconPin from "~/assets/images/icons/pin.svg";
+import { useLocalizatedRouter } from "~/shared/composables/useLocalizatedRouter";
 
 const props = defineProps<{
   content: Content
 }>();
 
-function openContent() {
-  // contentStore.setCurrentContent(props.content);
-  navigateTo(`/feed/${props.content.id}`);
-}
+const { localeNavigateTo } = useLocalizatedRouter();
 
 const dateFormatted = computed(() => props.content.created_at ? Parse.date(props.content.created_at) : "");
+
+function openContent() {
+  // contentStore.setCurrentContent(props.content);
+  localeNavigateTo(`/feed/${props.content.id}`);
+}
 </script>
 
 <style scoped lang="scss">
