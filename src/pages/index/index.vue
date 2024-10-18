@@ -90,6 +90,11 @@ import { AppLangs } from "~/shared/enums";
 import { LocalizatedLink } from "~/shared/ui";
 
 useSeoMeta(MainSeo);
+
+const { locale } = useI18n();
+watchEffect(() => {
+  console.log('@', locale.value);  
+})
 </script>
 
 <style scoped lang="scss">

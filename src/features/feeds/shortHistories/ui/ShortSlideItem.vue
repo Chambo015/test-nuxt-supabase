@@ -59,7 +59,6 @@ onMounted(() => {
         class="size-full"
         loop
         playsinline
-        muted
       >
         <source :src="file" type="video/mp4" />
         <source :src="file" type="video/mov" />

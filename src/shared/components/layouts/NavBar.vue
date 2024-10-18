@@ -6,7 +6,7 @@
           <BaseIcon name="logo-title-main" width="114" />
         </LocalizatedLink>
 
-        <template v-if="$device.isMobile">
+        <template v-if="!$device.isDesktop">
           <div class="flex items-center gap-2">
             <i class="pi pi-bars mr-3 text-xl" @click="visible = true"></i>
 
